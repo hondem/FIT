@@ -1,0 +1,3 @@
+/Users/jandemel/shared_folder/school/ijc_proj_2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/jandemel/shared_folder/school/ijc_proj_2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/jandemel/shared_folder/school/ijc_proj_2/cmake-build-debug/CMakeFiles/ijc_proj_2.dir

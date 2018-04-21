@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/jandemel/shared_folder/school/ijc_proj_2/tail.c
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+tail.h
+/Users/jandemel/shared_folder/school/ijc_proj_2/tail.h
+
+/Users/jandemel/shared_folder/school/ijc_proj_2/tail.h
+stdbool.h
+-
+
