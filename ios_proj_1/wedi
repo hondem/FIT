@@ -1,0 +1,215 @@
+#!/bin/sh
+POSIXLY_CORRECT=yes
+
+openfile()
+{
+    fileRecord=$(grep "$1.*" $aConf)
+    if [ "$fileRecord" = "" ]; then
+        echo "$1:1:$(date +%Y-%m-%d)" >> $aConf
+    else
+        counter=$(echo $fileRecord | cut -f2 -d":")
+        counter=$(($counter + 1))
+        newConf=$(cat $aConf | grep -v $fileRecord)
+        rm $aConf
+        touch $aConf
+        for line in $newConf; do
+            echo $line >> $aConf
+        done
+        echo "$1:$counter:$(date +%Y-%m-%d)" >> $aConf
+    fi
+
+    if [ -z $EDITOR ]; then
+        if [ -z $VISUAL ]; then
+            vi $1
+        else
+            $VISUAL "$1"
+        fi
+    else
+        $EDITOR "$1"
+    fi
+}
+
+realpath . > /dev/null 2>&1
+
+if [ $? -ne 0 ]; then
+  echo "Error: realpath is not available" >&2
+  exit 1
+fi
+
+# Handling an error if WEDI_RC is not set
+if [ -z $WEDI_RC ]; then
+    echo "An error occured while trying to access WEDI_RC variable." >&2
+    exit 1
+fi
+
+# If database file doesn't exist, create it
+if ! [ -f $WEDI_RC ]; then
+    mkdir -p $(dirname $WEDI_RC)
+    touch $WEDI_RC
+fi
+
+aConf=$(realpath $WEDI_RC)
+
+#====================================================================================
+
+# INPUT RECOGNITION
+# 1 - File exists
+# 2 - Directory exists
+# 3 - Directory exists and -m was passed
+# 4 - Directory exists and -l was passed
+# 5 - Directory exists, date parameter is valid and -b was passed
+# 6 - Directory exists, date parameter is valid and -a was passed
+
+inputType=-1
+if [ $# -eq 0 ]; then
+    a1=$(realpath .)
+    inputType=2
+elif [ $# -eq 1 ]; then
+    # 1 argument passed
+    if [ "$1" = "-m" ]; then
+        a2=$(realpath .)
+        inputType=3
+    elif [ "$1" = "-l" ]; then
+        a2=$(realpath .)
+        inputType=4
+    else
+        if [ -f $1 ] && [ "$1" != "" ]; then
+            a1=$(realpath $1)
+            inputType=1
+        elif [ -d $1 ] && [ "$1" != "" ]; then
+            a1=$(realpath $1)
+            inputType=2
+        elif [ "$1" != "" ]; then
+            mkdir -p $(dirname $1)
+	    touch $1
+            a1=$(realpath $1)
+            inputType=1
+        fi
+    fi
+
+elif [ $# -eq 2 ]; then
+    # 2 arguments are passed
+    if [ -d $2 ] && [ "$1" = "-m" ]; then
+        a2=$(realpath $2)
+        inputType=3
+    elif [ -d $2 ] && [ "$1" = "-l" ]; then
+        a2=$(realpath $2)
+        inputType=4
+    fi
+
+elif [ $# -eq 3 ]; then
+
+    date "+%Y-%m-%d" -d "$2" > /dev/null  2>&1
+    isDateValid=$?
+
+    # 4 arguments are passed
+    if [ -d $3 ] && [ "$1" = "-b" ] && [ $isDateValid -eq 0 ]; then
+        a3=$(realpath $3)
+        inputType=5
+    elif [ -d $3 ] && [ "$1" = "-a" ] && [ $isDateValid -eq 0 ]; then
+        a3=$(realpath $3)
+        inputType=6
+    fi
+fi
+
+#====================================================================================
+
+# ACTION SELECTION DEPENDING ON INPUTTYPE
+if [ $inputType -eq 1 ]; then #is file
+    openfile $a1
+
+elif [ $inputType -eq 2 ]; then #is directory
+    foundFiles=$(cat $aConf | grep "$a2.*")
+    matchedFiles=""
+    #echo "Found files: $foundFiles"
+    for line in $foundFiles; do
+        filepath=$(echo $line | cut -f1 -d":")
+        filename=${filepath##*/}
+        dirname=${filepath%%$filename}
+
+        if [ "$dirname" = "$a1/" ]; then
+            matchedFiles="${matchedFiles}\n${filepath}"
+        fi
+    done
+    #echo "Matched files: $matchedFiles"
+    file=$(echo -e $matchedFiles | tail -n1)
+    #echo $file
+    if [ "$file" = "" ]; then
+        echo "Error: No file in this folder has been edited yet" >&2
+        exit 1
+    else
+	#echo "Opening $file"
+        openfile $file
+    fi
+
+elif [ $inputType -eq 3 ]; then #-m argument passed
+    foundFiles=$(cat $aConf | grep "$a2.*")
+    _filepath=""
+    _filecount=0
+    for line in $foundFiles; do
+        filepath=$(echo $line | cut -f1 -d":")
+        filecount=$(echo $line | cut -f2 -d":")
+        filename=${filepath##*/}
+        dirname=${filepath%%$filename}
+
+        if [ "$dirname" = "$a2/" ]; then
+            if [ $filecount -gt $_filecount ]; then
+                _filepath=$filepath
+                _filecount=$filecount
+            fi
+        fi
+    done
+    openfile $_filepath
+
+elif [ $inputType -eq 4 ]; then #-l argument passed
+    foundFiles=$(cat $aConf | grep "$a2.*")
+    for line in $foundFiles; do
+        filepath=$(echo $line | cut -f1 -d":")
+        filename=${filepath##*/}
+        dirname=${filepath%%$filename}
+
+        if [ "$dirname" = "$a2/" ]; then
+            echo $filename
+        fi
+    done
+
+elif [ $inputType -eq 5 ]; then #-b was passed
+    foundFiles=$(cat $aConf | grep "$a3.*")
+    for line in $foundFiles; do
+        filepath=$(echo $line | cut -f1 -d":")
+        filename=${filepath##*/}
+        dirname=${filepath%%$filename}
+
+        if [ "$dirname" = "$a3/" ]; then
+            filedate=$(echo $line | cut -f3 -d":")
+            filedate=$(date -d $filedate +"%Y-%m-%d")
+            paramdate=$(date -d $2 +"%Y-%m-%d")
+
+            if expr "$filedate" "<" "$paramdate" >/dev/null; then
+                echo $filename
+            fi
+        fi
+    done
+
+elif [ $inputType -eq 6 ]; then #-b was passed
+    foundFiles=$(cat $aConf | grep "$a3.*")
+    for line in $foundFiles; do
+        filepath=$(echo $line | cut -f1 -d":")
+        filename=${filepath##*/}
+        dirname=${filepath%%$filename}
+
+        if [ "$dirname" = "$a3/" ]; then
+            filedate=$(echo $line | cut -f3 -d":")
+            filedate=$(date -d $filedate +"%Y-%m-%d")
+            paramdate=$(date -d $2 +"%Y-%m-%d")
+
+            if expr "$filedate" ">=" "$paramdate" >/dev/null; then
+                echo $filename
+            fi
+        fi
+    done
+
+elif [ $inputType -eq -1 ]; then #error
+    echo "Error occured! Exiting application"  >&2
+    exit 1
+fi
