@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/jandemel/shared_folder/school/ios_proj_2/main.c
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+semaphore.h
+-
+sys/mman.h
+-
+
