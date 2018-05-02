@@ -1,1 +1,0 @@
-CMakeLists.txt not found in /Users/jandemel/shared_folder/ijc_proj_1
