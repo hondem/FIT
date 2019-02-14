@@ -28,3 +28,8 @@ Aplikace operátorů a jednotliveé stavy jsou prakticky vždy omezené nějaký
 
 ![example_1](./images/image_1.png)
 ![example_2](./images/image_2.png)
+
+
+## Nějáké metody pro vyhledávání správného stavu...
+Na tohle se asi odkazovat spíše do přednášek :) 
+- https://www.fit.vutbr.cz/study/courses/IZU/private/1819izu_2.pdf
