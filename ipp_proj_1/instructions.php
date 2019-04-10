@@ -92,9 +92,10 @@ abstract class Instruction{
 	 */
 	static function validateConst($const){
 		if(
+			preg_match("/^nil@nil$/", $const) || //NIL
 			preg_match("/^bool@(true|false)$/", $const) || //BOOL
 			preg_match("/^int@(-{0,1}[1-9][0-9]*|0)$/", $const) || //INT
-			preg_match("/^string@(\\[0-9]{3}|[^\\#\s])*$/", $const)){ //STRING
+			preg_match("/^string@(\\\\\d{3,}|[^\\\\\s])*$/", $const)){ //STRING
 			return true;
 		} else {
 			return false;
@@ -453,6 +454,29 @@ class INS_Type extends Instruction{
 	}
 }
 
+class INS_Not extends Instruction{
+	static function generate(&$xmlEngine, $tokens, $order){
+		if( self::validateVar($tokens[1]) &&
+			self::validateSymb($tokens[2]) &&
+			count($tokens) == 3){
+
+			$instruction = $xmlEngine->addChild('instruction');
+			$instruction->addAttribute('order', $order);
+			$instruction->addAttribute('opcode', 'NOT');
+			
+			$param = $instruction->addChild('arg1', $tokens[1]);
+			$param->addAttribute('type', 'var');
+
+			$resolvedParam = self::resolveSymb($tokens[2]);
+			$param = $instruction->addChild('arg2', $resolvedParam->value);
+			$param->addAttribute('type', $resolvedParam->type);
+
+		} else { 
+			ErrorFunctions::THROW_LEX_SYN_ERROR();
+		}
+	}
+}
+
 // ====================== 3 PARAMs ======================
 
 class INS_Add extends Instruction{
@@ -689,34 +713,6 @@ class INS_Or extends Instruction{
 			$instruction = $xmlEngine->addChild('instruction');
 			$instruction->addAttribute('order', $order);
 			$instruction->addAttribute('opcode', 'OR');
-			
-			$param = $instruction->addChild('arg1', $tokens[1]);
-			$param->addAttribute('type', 'var');
-
-			$resolvedParam = self::resolveSymb($tokens[2]);
-			$param = $instruction->addChild('arg2', $resolvedParam->value);
-			$param->addAttribute('type', $resolvedParam->type);
-
-			$resolvedParam = self::resolveSymb($tokens[3]);
-			$param = $instruction->addChild('arg3', $resolvedParam->value);
-			$param->addAttribute('type', $resolvedParam->type);
-
-		} else { 
-			ErrorFunctions::THROW_LEX_SYN_ERROR();
-		}
-	}
-}
-
-class INS_Not extends Instruction{
-	static function generate(&$xmlEngine, $tokens, $order){
-		if( self::validateVar($tokens[1]) &&
-			self::validateSymb($tokens[2]) &&
-			self::validateSymb($tokens[3]) &&
-			count($tokens) == 4){
-
-			$instruction = $xmlEngine->addChild('instruction');
-			$instruction->addAttribute('order', $order);
-			$instruction->addAttribute('opcode', 'NOT');
 			
 			$param = $instruction->addChild('arg1', $tokens[1]);
 			$param->addAttribute('type', 'var');

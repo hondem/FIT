@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode19" name="xml" description="my fucking project">
+    <instruction order="1" opcode="CREATEFRAME" />
+    <instruction order="2" opcode="DEFVAR">
+    	<arg1 type="var">TF@counter</arg1>
+    </instruction>
+	<instruction order="3" opcode="PUSHFRAME" />
+	<instruction order="4" opcode="CREATEFRAME" />
+	<instruction order="5" opcode="DEFVAR">
+    	<arg1 type="var">LF@counter2</arg1>
+    </instruction>
+	<instruction order="6" opcode="DEFVAR">
+    	<arg1 type="var">TF@counter3</arg1>
+    </instruction>
+	<instruction order="7" opcode="PUSHFRAME" />
+	<instruction order="8" opcode="CREATEFRAME" />
+	<instruction order="9" opcode="PUSHFRAME" />
+	<instruction order="10" opcode="POPFRAME" />
+ </program>

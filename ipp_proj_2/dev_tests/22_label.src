@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode19" name="xml" description="my fucking project">
+    <instruction order="1" opcode="CREATEFRAME" />
+    <instruction order="2" opcode="WRITE">
+        <arg1 type="string">Ted-vytvorim-label</arg1>
+    </instruction>
+    <instruction order="3" opcode="LABEL">
+        <arg1 type="label">navesti</arg1>
+    </instruction>
+    <instruction order="4" opcode="LABEL">
+        <arg1 type="label">novy_label2</arg1>
+    </instruction>
+    <instruction order="5" opcode="WRITE">
+        <arg1 type="string">Label-vytvoreny</arg1>
+    </instruction>
+ </program>
