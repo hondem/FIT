@@ -21,8 +21,11 @@ class INS_Strlen(BaseInstruction):
 		else:
 			sourceString = self.parseConst(self.instruction['args']['2'])
 
-		if sourceString['type'] != 'string':
+		if sourceString['type'] == "":
 			ErrorHandler.ERROR_RUNTIME_MISSING_VALUE()
+
+		if sourceString['type'] != 'string':
+			ErrorHandler.ERROR_RUNTIME_OPERAND()
 
 		self.programMemory[targetVariable[0]][targetVariable[1]] = {
 			"type": "int",

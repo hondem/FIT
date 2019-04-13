@@ -1,3 +1,0 @@
-tohle je test, jestli to funguje
-42
-true

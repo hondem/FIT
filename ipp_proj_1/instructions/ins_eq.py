@@ -28,14 +28,15 @@ class INS_Eq(BaseInstruction):
 		else:
 			symb2 = self.parseConst(self.instruction['args']['3'])
 
-		if symb1['type'] != symb2['type']:
-			ErrorHandler.ERROR_RUNTIME_OPERAND()
+		if not (symb1['type'] == 'nil' or symb2['type'] == 'nil'):
+			if symb1['type'] != symb2['type']:
+				ErrorHandler.ERROR_RUNTIME_OPERAND()
 
 		boolValue = None
 
 		# we have two strings
 		if symb1['type'] == 'string':
-			boolValue = symb1['value'] == symb2['value']
+			boolValue = (symb1['value'] == symb2['value'])
 
 		# we have two integers
 		elif symb1['type'] == 'int':
@@ -45,8 +46,8 @@ class INS_Eq(BaseInstruction):
 		elif symb1['type'] == 'bool':
 			boolValue = bool(symb1['value']) == bool(symb2['value'])
 		
-		elif symb1['type'] == 'nil':
-			boolValue = symb1['type'] == symb2['type']
+		elif symb1['type'] == 'nil' or symb2['type'] == 'nil':
+			boolValue = (symb1['type'] == symb2['type'])
 
 		# we have something else
 		else:

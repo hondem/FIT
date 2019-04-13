@@ -44,6 +44,9 @@ class INS_Stri2int(BaseInstruction):
 		varPath = self.instruction['args']['1']['value'].split('@')
 		self.checkVarExistence(self.programMemory, varPath[0], varPath[1])
 
+		if symb1['type'] != 'string' or symb2['type'] != 'int':
+			ErrorHandler.ERROR_RUNTIME_OPERAND()
+
 		try:
 			self.programMemory[varPath[0]][varPath[1]] = {
 				"type": "int",

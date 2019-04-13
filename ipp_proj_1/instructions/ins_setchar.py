@@ -32,7 +32,7 @@ class INS_Setchar(BaseInstruction):
 		# ALL SYMBOLS ARE NOW LOADED
 
 		if symb1['type'] != 'int' or symb2['type'] != 'string':
-			ErrorHandler.ERROR_RUNTIME_OPERAND_VALUE()
+			ErrorHandler.ERROR_RUNTIME_OPERAND()
 
 		if len(symb2['value']) == 0:
 			ErrorHandler.ERROR_RUNTIME_STRING()
@@ -40,7 +40,7 @@ class INS_Setchar(BaseInstruction):
 		targetVariableContent = self.programMemory[targetVariable[0]][targetVariable[1]]
 
 		if targetVariableContent['type'] != "string":
-			ErrorHandler.ERROR_RUNTIME_OPERAND_VALUE()
+			ErrorHandler.ERROR_RUNTIME_OPERAND()
 
 		if int(symb1['value']) < 0 or int(symb1['value']) >= len(targetVariableContent['value']):
 			ErrorHandler.ERROR_RUNTIME_STRING()

@@ -15,5 +15,5 @@ class INS_PopFrame(BaseInstruction):
 		self.checkFrameExistence(self.programMemory, 'LF')
 		
 		self.programMemory['TF'] = self.programMemory['LF']
-		self.programMemory['LF'] = self.programMemory['LF_STACK'].pop(0) if self.programMemory['LF_STACK'] != [] else {}
+		self.programMemory['LF'] = self.programMemory['LF_STACK'].pop(0) if self.programMemory['LF_STACK'] != [] else None
 		

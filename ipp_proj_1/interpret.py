@@ -127,6 +127,11 @@ for instruction in program:
 	if len(parsedInstruction['args']) != len(instruction):
 		ErrorHandler.ERROR_XML_STRUCTURE()
 
+	# Lets check if there are not any duplicates or missing arguments
+	for index in range(1, len(instruction) + 1):
+		if str(index) not in parsedInstruction['args']:
+			ErrorHandler.ERROR_XML_STRUCTURE()
+
 	# We will place that instruction on the specific position in final DICT
 	parsedProgram[int(instruction.attrib["order"])] = parsedInstruction
 

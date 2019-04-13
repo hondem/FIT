@@ -21,17 +21,17 @@ class INS_Add(BaseInstruction):
 			self.validateVar(f"{self.instruction['args']['2']['type']}@{self.instruction['args']['2']['value']}")
 			varPath = self.instruction['args']['2']['value'].split('@')
 			self.checkVarExistence(self.programMemory, varPath[0], varPath[1])
-			symb1 = self.programMemory[varPath[0]][varPath[1]] if self.programMemory[varPath[0]][varPath[1]]['type'] == 'int' else ErrorHandler.ERROR_SEMANTIC()
+			symb1 = self.programMemory[varPath[0]][varPath[1]] if self.programMemory[varPath[0]][varPath[1]]['type'] == 'int' else ErrorHandler.ERROR_RUNTIME_OPERAND()
 		else:
-			symb1 = self.instruction['args']['2'] if self.instruction['args']['2']['type'] == 'int' else ErrorHandler.ERROR_RUNTIME_OPERAND_VALUE()
+			symb1 = self.instruction['args']['2'] if self.instruction['args']['2']['type'] == 'int' else ErrorHandler.ERROR_RUNTIME_OPERAND()
 
 		if self.instruction['args']['3']['type'] == 'var':
 			self.validateVar(f"{self.instruction['args']['3']['type']}@{self.instruction['args']['3']['value']}")
 			varPath = self.instruction['args']['3']['value'].split('@')
 			self.checkVarExistence(self.programMemory, varPath[0], varPath[1])
-			symb2 = self.programMemory[varPath[0]][varPath[1]] if self.programMemory[varPath[0]][varPath[1]]['type'] == 'int' else ErrorHandler.ERROR_SEMANTIC()
+			symb2 = self.programMemory[varPath[0]][varPath[1]] if self.programMemory[varPath[0]][varPath[1]]['type'] == 'int' else ErrorHandler.ERROR_RUNTIME_OPERAND()
 		else:
-			symb2 = self.instruction['args']['3'] if self.instruction['args']['3']['type'] == 'int' else ErrorHandler.ERROR_RUNTIME_OPERAND_VALUE()
+			symb2 = self.instruction['args']['3'] if self.instruction['args']['3']['type'] == 'int' else ErrorHandler.ERROR_RUNTIME_OPERAND()
 
 		# Target variable
 

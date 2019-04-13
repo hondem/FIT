@@ -31,6 +31,9 @@ class INS_Getchar(BaseInstruction):
 
 		# ALL SYMBOLS ARE NOW LOADED
 
+		if symb1['type'] == "" or symb2['type'] == "":
+			ErrorHandler.ERROR_RUNTIME_MISSING_VALUE()
+
 		if symb1['type'] != 'string' or symb2['type'] != 'int':
 			ErrorHandler.ERROR_RUNTIME_OPERAND()
 

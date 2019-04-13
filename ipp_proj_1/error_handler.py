@@ -40,7 +40,7 @@ class ErrorHandler:
 	"""
 	@staticmethod
 	def ERROR_PARAM():
-		ErrorHandler.eprint("\033[31mERROR: Bad or forbidden use of parameters")
+		ErrorHandler.eprint("\033[31mERROR: Bad or forbidden use of parameters\033[39m")
 		sys.exit(ErrorHandler.CODE_PARAM_ERROR)
 
 	"""
@@ -48,7 +48,7 @@ class ErrorHandler:
 	"""
 	@staticmethod
 	def ERROR_INPUT_FILE():
-		ErrorHandler.eprint("\033[31mERROR: Bad or damaged input file")
+		ErrorHandler.eprint("\033[31mERROR: Bad or damaged input file\033[39m")
 		sys.exit(ErrorHandler.CODE_INPUT_FILE_ERROR)
 
 	"""
@@ -56,7 +56,7 @@ class ErrorHandler:
 	"""
 	@staticmethod
 	def ERROR_OUTPUT_FILE():
-		ErrorHandler.eprint("\033[31mERROR: Bad or damaged output file")
+		ErrorHandler.eprint("\033[31mERROR: Bad or damaged output file\033[39m")
 		sys.exit(ErrorHandler.CODE_OUTPUT_FILE_ERROR)
 
 	"""
@@ -64,7 +64,7 @@ class ErrorHandler:
 	"""
 	@staticmethod
 	def ERROR_SEMANTIC():
-		ErrorHandler.eprint("\033[31mERROR: Semantic or syntactic error")
+		ErrorHandler.eprint("\033[31mERROR: Semantic or syntactic error\033[39m")
 		sys.exit(ErrorHandler.CODE_SEMANTIC)
 
 	"""
@@ -72,7 +72,7 @@ class ErrorHandler:
 	"""
 	@staticmethod
 	def ERROR_RUNTIME_OPERAND():
-		ErrorHandler.eprint("\033[31mERROR: Runtime error - forbidden use of operand")
+		ErrorHandler.eprint("\033[31mERROR: Runtime error - forbidden use of operand\033[39m")
 		sys.exit(ErrorHandler.CODE_RUNTIME_OPERAND)
 
 	"""
@@ -80,7 +80,7 @@ class ErrorHandler:
 	"""
 	@staticmethod
 	def ERROR_RUNTIME_UNDEFINED_VARIABLE():
-		ErrorHandler.eprint("\033[31mERROR: Runtime error - Use of undefined variable")
+		ErrorHandler.eprint("\033[31mERROR: Runtime error - Use of undefined variable\033[39m")
 		sys.exit(ErrorHandler.CODE_RUNTIME_UNDEFINED_VARIABLE)
 
 	"""
@@ -88,7 +88,7 @@ class ErrorHandler:
 	"""
 	@staticmethod
 	def ERROR_RUNTIME_UNDEFINED_FRAME():
-		ErrorHandler.eprint("\033[31mERROR: Runtime error - Use of undefined frame")
+		ErrorHandler.eprint("\033[31mERROR: Runtime error - Use of undefined frame\033[39m")
 		sys.exit(ErrorHandler.CODE_RUNTIME_UNDEFINED_FRAME)
 
 	"""
@@ -96,7 +96,7 @@ class ErrorHandler:
 	"""
 	@staticmethod
 	def ERROR_RUNTIME_MISSING_VALUE():
-		ErrorHandler.eprint("\033[31mERROR: Runtime error - Missing value")
+		ErrorHandler.eprint("\033[31mERROR: Runtime error - Missing value\033[39m")
 		sys.exit(ErrorHandler.CODE_RUNTIME_MISSING_VALUE)
 
 	"""
@@ -104,7 +104,7 @@ class ErrorHandler:
 	"""
 	@staticmethod
 	def ERROR_RUNTIME_OPERAND_VALUE():
-		ErrorHandler.eprint("\033[31mERROR: Runtime error - Bad or forbidden operand value")
+		ErrorHandler.eprint("\033[31mERROR: Runtime error - Bad or forbidden operand value\033[39m")
 		sys.exit(ErrorHandler.CODE_RUNTIME_OPERAND_VALUE)
 
 	"""
@@ -112,7 +112,7 @@ class ErrorHandler:
 	"""
 	@staticmethod
 	def ERROR_RUNTIME_STRING():
-		ErrorHandler.eprint("\033[31mERROR: Runtime error - Bad string")
+		ErrorHandler.eprint("\033[31mERROR: Runtime error - Bad string\033[39m")
 		sys.exit(ErrorHandler.CODE_RUNTIME_STRING)
 
 	"""
@@ -120,7 +120,7 @@ class ErrorHandler:
 	"""
 	@staticmethod
 	def ERROR_INTERNAL():
-		ErrorHandler.eprint("\033[31mERROR: Internal error")
+		ErrorHandler.eprint("\033[31mERROR: Internal error\033[39m")
 		sys.exit(ErrorHandler.CODE_INTERNAL_ERROR)
 
 	"""
@@ -128,7 +128,7 @@ class ErrorHandler:
 	"""
 	@staticmethod
 	def ERROR_XML_INPUT():
-		ErrorHandler.eprint("\033[31mERROR: Error parsing input XML")
+		ErrorHandler.eprint("\033[31mERROR: Error parsing input XML\033[39m")
 		sys.exit(ErrorHandler.CODE_INPUT_XML)
 
 	"""
@@ -136,5 +136,5 @@ class ErrorHandler:
 	"""
 	@staticmethod
 	def ERROR_XML_STRUCTURE():
-		ErrorHandler.eprint("\033[31mERROR: Bad XML structure or unknown opcode")
+		ErrorHandler.eprint("\033[31mERROR: Bad XML structure or unknown opcode\033[39m")
 		sys.exit(ErrorHandler.CODE_XML_STRUCTURE)
