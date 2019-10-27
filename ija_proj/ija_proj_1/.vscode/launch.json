@@ -1,0 +1,11 @@
+{
+	"configurations": [
+		{
+			"type": "java",
+			"name": "CodeLens (Launch) - Homework1",
+			"request": "launch",
+			"mainClass": "ija.ija2018.homework1.Homework1",
+			"projectName": "ija_proj_1_da51b465"
+		}
+	]
+}

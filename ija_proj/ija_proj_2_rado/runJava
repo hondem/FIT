@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# nezapomente na prava: $chmod a+x runJava
+# pak u� jen: $./runJava
+
+echo "Running Java"
+
+rm *.class
+rm ./*.class
+rm ./**/.class
+javac ija/ija2018/homework2/Homework2Test.java
+java -ea org.junit.runner.JUnitCore ija.ija2018.homework2.Homework2Test

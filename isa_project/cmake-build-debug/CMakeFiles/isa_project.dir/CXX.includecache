@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/jandemel/shared_folder/school/isa_project/network.cpp
+network.h
+/Users/jandemel/shared_folder/school/isa_project/network.h
+arpa/inet.h
+-
+sys/socket.h
+-
+ifaddrs.h
+-
+cstdio
+-
+string
+-
+utils/exceptions.h
+/Users/jandemel/shared_folder/school/isa_project/utils/exceptions.h
+utils/arg_parser.h
+/Users/jandemel/shared_folder/school/isa_project/utils/arg_parser.h
+
+/Users/jandemel/shared_folder/school/isa_project/network.h
+string
+-
+vector
+-
+
+/Users/jandemel/shared_folder/school/isa_project/utils/arg_parser.h
+string
+-
+
+/Users/jandemel/shared_folder/school/isa_project/utils/exceptions.h
+stdexcept
+-
+string
+-
+
