@@ -32,7 +32,10 @@ void sniffer::start() {
         // Apply sniff filter
         this->setFilter(handle, "dst port 547");
 
-        pcap_loop(handle, -1, &sniffer::packetReceivedWrapper, (u_char*)this);
+        pcap_loop(handle, -1, [](u_char *instance, const pcap_pkthdr *pkthdr, const u_char *packet) {
+            sniffer *obj = (sniffer *)instance;
+            obj->packetReceived(pkthdr, packet);
+        }, (u_char*)this);
 
     } catch (AppException &e){
         closeApp(e.what(), e.code);
@@ -57,11 +60,6 @@ void sniffer::setFilter(pcap_t *handle, char *filterExpression) {
     if(pcap_setfilter(handle, fp) == PCAP_ERROR){
         throw InternalException("Couldn't apply filter\n");
     }
-}
-
-void sniffer::packetReceivedWrapper(u_char *instance, const pcap_pkthdr *pkthdr, const u_char *packet) {
-    sniffer* obj = (sniffer*)instance;
-    obj->packetReceived(pkthdr, packet);
 }
 
 void sniffer::packetReceived(const pcap_pkthdr *pkthdr, const u_char *packet) {

@@ -65,14 +65,6 @@ public:
      * Start sniffing
      */
     void start();
-
-    /**
-     * Wrapper for callback function
-     * @param args
-     * @param header
-     * @param packet
-     */
-    static void packetReceivedWrapper(u_char *instance, const pcap_pkthdr *pkthdr, const u_char *packet);
 };
 
 
