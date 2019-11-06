@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/clion/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /usr/local/bin/clion/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/jandemel/shared_folder/school/isa_project
+CMAKE_SOURCE_DIR = /home/jandemel/projects/school/isa_project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/jandemel/shared_folder/school/isa_project/cmake-build-debug
+CMAKE_BINARY_DIR = /home/jandemel/projects/school/isa_project/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/jandemel/shared_folder/school/isa_project/cmake-build-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/local/bin/clion/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/usr/local/bin/clion/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/CMakeFiles /Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jandemel/projects/school/isa_project/cmake-build-debug/CMakeFiles /home/jandemel/projects/school/isa_project/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jandemel/projects/school/isa_project/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -150,32 +150,32 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-network.o: network.cpp.o
+sniffer.o: sniffer.cpp.o
 
-.PHONY : network.o
+.PHONY : sniffer.o
 
 # target to build an object file
-network.cpp.o:
-	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/network.cpp.o
-.PHONY : network.cpp.o
+sniffer.cpp.o:
+	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/sniffer.cpp.o
+.PHONY : sniffer.cpp.o
 
-network.i: network.cpp.i
+sniffer.i: sniffer.cpp.i
 
-.PHONY : network.i
+.PHONY : sniffer.i
 
 # target to preprocess a source file
-network.cpp.i:
-	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/network.cpp.i
-.PHONY : network.cpp.i
+sniffer.cpp.i:
+	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/sniffer.cpp.i
+.PHONY : sniffer.cpp.i
 
-network.s: network.cpp.s
+sniffer.s: sniffer.cpp.s
 
-.PHONY : network.s
+.PHONY : sniffer.s
 
 # target to generate assembly for a file
-network.cpp.s:
-	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/network.cpp.s
-.PHONY : network.cpp.s
+sniffer.cpp.s:
+	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/sniffer.cpp.s
+.PHONY : sniffer.cpp.s
 
 utils/arg_parser.o: utils/arg_parser.cpp.o
 
@@ -231,6 +231,33 @@ utils/exceptions.cpp.s:
 	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/utils/exceptions.cpp.s
 .PHONY : utils/exceptions.cpp.s
 
+utils/network.o: utils/network.cpp.o
+
+.PHONY : utils/network.o
+
+# target to build an object file
+utils/network.cpp.o:
+	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/utils/network.cpp.o
+.PHONY : utils/network.cpp.o
+
+utils/network.i: utils/network.cpp.i
+
+.PHONY : utils/network.i
+
+# target to preprocess a source file
+utils/network.cpp.i:
+	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/utils/network.cpp.i
+.PHONY : utils/network.cpp.i
+
+utils/network.s: utils/network.cpp.s
+
+.PHONY : utils/network.s
+
+# target to generate assembly for a file
+utils/network.cpp.s:
+	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/utils/network.cpp.s
+.PHONY : utils/network.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -238,20 +265,23 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
 	@echo "... isa_project"
+	@echo "... edit_cache"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... network.o"
-	@echo "... network.i"
-	@echo "... network.s"
+	@echo "... sniffer.o"
+	@echo "... sniffer.i"
+	@echo "... sniffer.s"
 	@echo "... utils/arg_parser.o"
 	@echo "... utils/arg_parser.i"
 	@echo "... utils/arg_parser.s"
 	@echo "... utils/exceptions.o"
 	@echo "... utils/exceptions.i"
 	@echo "... utils/exceptions.s"
+	@echo "... utils/network.o"
+	@echo "... utils/network.i"
+	@echo "... utils/network.s"
 .PHONY : help
 
 

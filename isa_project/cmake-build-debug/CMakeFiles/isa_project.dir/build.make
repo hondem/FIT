@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/clion/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /usr/local/bin/clion/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/jandemel/shared_folder/school/isa_project
+CMAKE_SOURCE_DIR = /home/jandemel/projects/school/isa_project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/jandemel/shared_folder/school/isa_project/cmake-build-debug
+CMAKE_BINARY_DIR = /home/jandemel/projects/school/isa_project/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/isa_project.dir/depend.make
@@ -59,62 +59,76 @@ include CMakeFiles/isa_project.dir/flags.make
 
 CMakeFiles/isa_project.dir/main.cpp.o: CMakeFiles/isa_project.dir/flags.make
 CMakeFiles/isa_project.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/isa_project.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/isa_project.dir/main.cpp.o -c /Users/jandemel/shared_folder/school/isa_project/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jandemel/projects/school/isa_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/isa_project.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/isa_project.dir/main.cpp.o -c /home/jandemel/projects/school/isa_project/main.cpp
 
 CMakeFiles/isa_project.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/isa_project.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jandemel/shared_folder/school/isa_project/main.cpp > CMakeFiles/isa_project.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jandemel/projects/school/isa_project/main.cpp > CMakeFiles/isa_project.dir/main.cpp.i
 
 CMakeFiles/isa_project.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/isa_project.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jandemel/shared_folder/school/isa_project/main.cpp -o CMakeFiles/isa_project.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jandemel/projects/school/isa_project/main.cpp -o CMakeFiles/isa_project.dir/main.cpp.s
 
 CMakeFiles/isa_project.dir/utils/arg_parser.cpp.o: CMakeFiles/isa_project.dir/flags.make
 CMakeFiles/isa_project.dir/utils/arg_parser.cpp.o: ../utils/arg_parser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/isa_project.dir/utils/arg_parser.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/isa_project.dir/utils/arg_parser.cpp.o -c /Users/jandemel/shared_folder/school/isa_project/utils/arg_parser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jandemel/projects/school/isa_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/isa_project.dir/utils/arg_parser.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/isa_project.dir/utils/arg_parser.cpp.o -c /home/jandemel/projects/school/isa_project/utils/arg_parser.cpp
 
 CMakeFiles/isa_project.dir/utils/arg_parser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/isa_project.dir/utils/arg_parser.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jandemel/shared_folder/school/isa_project/utils/arg_parser.cpp > CMakeFiles/isa_project.dir/utils/arg_parser.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jandemel/projects/school/isa_project/utils/arg_parser.cpp > CMakeFiles/isa_project.dir/utils/arg_parser.cpp.i
 
 CMakeFiles/isa_project.dir/utils/arg_parser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/isa_project.dir/utils/arg_parser.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jandemel/shared_folder/school/isa_project/utils/arg_parser.cpp -o CMakeFiles/isa_project.dir/utils/arg_parser.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jandemel/projects/school/isa_project/utils/arg_parser.cpp -o CMakeFiles/isa_project.dir/utils/arg_parser.cpp.s
 
 CMakeFiles/isa_project.dir/utils/exceptions.cpp.o: CMakeFiles/isa_project.dir/flags.make
 CMakeFiles/isa_project.dir/utils/exceptions.cpp.o: ../utils/exceptions.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/isa_project.dir/utils/exceptions.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/isa_project.dir/utils/exceptions.cpp.o -c /Users/jandemel/shared_folder/school/isa_project/utils/exceptions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jandemel/projects/school/isa_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/isa_project.dir/utils/exceptions.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/isa_project.dir/utils/exceptions.cpp.o -c /home/jandemel/projects/school/isa_project/utils/exceptions.cpp
 
 CMakeFiles/isa_project.dir/utils/exceptions.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/isa_project.dir/utils/exceptions.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jandemel/shared_folder/school/isa_project/utils/exceptions.cpp > CMakeFiles/isa_project.dir/utils/exceptions.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jandemel/projects/school/isa_project/utils/exceptions.cpp > CMakeFiles/isa_project.dir/utils/exceptions.cpp.i
 
 CMakeFiles/isa_project.dir/utils/exceptions.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/isa_project.dir/utils/exceptions.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jandemel/shared_folder/school/isa_project/utils/exceptions.cpp -o CMakeFiles/isa_project.dir/utils/exceptions.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jandemel/projects/school/isa_project/utils/exceptions.cpp -o CMakeFiles/isa_project.dir/utils/exceptions.cpp.s
 
-CMakeFiles/isa_project.dir/network.cpp.o: CMakeFiles/isa_project.dir/flags.make
-CMakeFiles/isa_project.dir/network.cpp.o: ../network.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/isa_project.dir/network.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/isa_project.dir/network.cpp.o -c /Users/jandemel/shared_folder/school/isa_project/network.cpp
+CMakeFiles/isa_project.dir/utils/network.cpp.o: CMakeFiles/isa_project.dir/flags.make
+CMakeFiles/isa_project.dir/utils/network.cpp.o: ../utils/network.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jandemel/projects/school/isa_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/isa_project.dir/utils/network.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/isa_project.dir/utils/network.cpp.o -c /home/jandemel/projects/school/isa_project/utils/network.cpp
 
-CMakeFiles/isa_project.dir/network.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/isa_project.dir/network.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jandemel/shared_folder/school/isa_project/network.cpp > CMakeFiles/isa_project.dir/network.cpp.i
+CMakeFiles/isa_project.dir/utils/network.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/isa_project.dir/utils/network.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jandemel/projects/school/isa_project/utils/network.cpp > CMakeFiles/isa_project.dir/utils/network.cpp.i
 
-CMakeFiles/isa_project.dir/network.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/isa_project.dir/network.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jandemel/shared_folder/school/isa_project/network.cpp -o CMakeFiles/isa_project.dir/network.cpp.s
+CMakeFiles/isa_project.dir/utils/network.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/isa_project.dir/utils/network.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jandemel/projects/school/isa_project/utils/network.cpp -o CMakeFiles/isa_project.dir/utils/network.cpp.s
+
+CMakeFiles/isa_project.dir/sniffer.cpp.o: CMakeFiles/isa_project.dir/flags.make
+CMakeFiles/isa_project.dir/sniffer.cpp.o: ../sniffer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jandemel/projects/school/isa_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/isa_project.dir/sniffer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/isa_project.dir/sniffer.cpp.o -c /home/jandemel/projects/school/isa_project/sniffer.cpp
+
+CMakeFiles/isa_project.dir/sniffer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/isa_project.dir/sniffer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jandemel/projects/school/isa_project/sniffer.cpp > CMakeFiles/isa_project.dir/sniffer.cpp.i
+
+CMakeFiles/isa_project.dir/sniffer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/isa_project.dir/sniffer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jandemel/projects/school/isa_project/sniffer.cpp -o CMakeFiles/isa_project.dir/sniffer.cpp.s
 
 # Object files for target isa_project
 isa_project_OBJECTS = \
 "CMakeFiles/isa_project.dir/main.cpp.o" \
 "CMakeFiles/isa_project.dir/utils/arg_parser.cpp.o" \
 "CMakeFiles/isa_project.dir/utils/exceptions.cpp.o" \
-"CMakeFiles/isa_project.dir/network.cpp.o"
+"CMakeFiles/isa_project.dir/utils/network.cpp.o" \
+"CMakeFiles/isa_project.dir/sniffer.cpp.o"
 
 # External object files for target isa_project
 isa_project_EXTERNAL_OBJECTS =
@@ -122,10 +136,12 @@ isa_project_EXTERNAL_OBJECTS =
 isa_project: CMakeFiles/isa_project.dir/main.cpp.o
 isa_project: CMakeFiles/isa_project.dir/utils/arg_parser.cpp.o
 isa_project: CMakeFiles/isa_project.dir/utils/exceptions.cpp.o
-isa_project: CMakeFiles/isa_project.dir/network.cpp.o
+isa_project: CMakeFiles/isa_project.dir/utils/network.cpp.o
+isa_project: CMakeFiles/isa_project.dir/sniffer.cpp.o
 isa_project: CMakeFiles/isa_project.dir/build.make
+isa_project: /usr/lib/x86_64-linux-gnu/libpcap.so
 isa_project: CMakeFiles/isa_project.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable isa_project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jandemel/projects/school/isa_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable isa_project"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/isa_project.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -138,6 +154,6 @@ CMakeFiles/isa_project.dir/clean:
 .PHONY : CMakeFiles/isa_project.dir/clean
 
 CMakeFiles/isa_project.dir/depend:
-	cd /Users/jandemel/shared_folder/school/isa_project/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/jandemel/shared_folder/school/isa_project /Users/jandemel/shared_folder/school/isa_project /Users/jandemel/shared_folder/school/isa_project/cmake-build-debug /Users/jandemel/shared_folder/school/isa_project/cmake-build-debug /Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/CMakeFiles/isa_project.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jandemel/projects/school/isa_project/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jandemel/projects/school/isa_project /home/jandemel/projects/school/isa_project /home/jandemel/projects/school/isa_project/cmake-build-debug /home/jandemel/projects/school/isa_project/cmake-build-debug /home/jandemel/projects/school/isa_project/cmake-build-debug/CMakeFiles/isa_project.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/isa_project.dir/depend
 

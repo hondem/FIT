@@ -1,4 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/jandemel/shared_folder/school/isa_project
+/usr/local/bin/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/jandemel/projects/school/isa_project
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/jandemel/shared_folder/school/isa_project/cmake-build-debug
+-- Build files have been written to: /home/jandemel/projects/school/isa_project/cmake-build-debug

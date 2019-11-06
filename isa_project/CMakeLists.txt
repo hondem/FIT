@@ -3,4 +3,8 @@ project(isa_project)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(isa_project main.cpp utils/arg_parser.cpp utils/arg_parser.h utils/exceptions.h utils/exceptions.cpp network.cpp network.h)
+include(FindPCAP.cmake)
+
+add_executable(isa_project main.cpp utils/arg_parser.cpp utils/arg_parser.h utils/exceptions.h utils/exceptions.cpp utils/network.cpp utils/network.h sniffer.cpp sniffer.h)
+
+target_link_libraries(isa_project ${PCAP_LIBRARY})

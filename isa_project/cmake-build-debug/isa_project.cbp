@@ -8,100 +8,113 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug"/>
+				<Option working_dir="/home/jandemel/projects/school/isa_project/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug"/>
+				<Option working_dir="/home/jandemel/projects/school/isa_project/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="isa_project">
-				<Option output="/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/isa_project" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug"/>
+				<Option output="/home/jandemel/projects/school/isa_project/cmake-build-debug/isa_project" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jandemel/projects/school/isa_project/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 isa_project"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 isa_project"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="isa_project/fast">
-				<Option output="/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/isa_project" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug"/>
+				<Option output="/home/jandemel/projects/school/isa_project/cmake-build-debug/isa_project" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jandemel/projects/school/isa_project/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 isa_project/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jandemel/shared_folder/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 isa_project/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/jandemel/projects/school/isa_project/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jandemel/projects/school/isa_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/jandemel/shared_folder/school/isa_project/main.cpp">
+		<Unit filename="/home/jandemel/projects/school/isa_project/main.cpp">
 			<Option target="isa_project"/>
 		</Unit>
-		<Unit filename="/Users/jandemel/shared_folder/school/isa_project/network.cpp">
+		<Unit filename="/home/jandemel/projects/school/isa_project/sniffer.cpp">
 			<Option target="isa_project"/>
 		</Unit>
-		<Unit filename="/Users/jandemel/shared_folder/school/isa_project/network.h">
+		<Unit filename="/home/jandemel/projects/school/isa_project/sniffer.h">
 			<Option target="isa_project"/>
 		</Unit>
-		<Unit filename="/Users/jandemel/shared_folder/school/isa_project/utils/arg_parser.cpp">
+		<Unit filename="/home/jandemel/projects/school/isa_project/utils/arg_parser.cpp">
 			<Option target="isa_project"/>
 		</Unit>
-		<Unit filename="/Users/jandemel/shared_folder/school/isa_project/utils/arg_parser.h">
+		<Unit filename="/home/jandemel/projects/school/isa_project/utils/arg_parser.h">
 			<Option target="isa_project"/>
 		</Unit>
-		<Unit filename="/Users/jandemel/shared_folder/school/isa_project/utils/exceptions.cpp">
+		<Unit filename="/home/jandemel/projects/school/isa_project/utils/exceptions.cpp">
 			<Option target="isa_project"/>
 		</Unit>
-		<Unit filename="/Users/jandemel/shared_folder/school/isa_project/utils/exceptions.h">
+		<Unit filename="/home/jandemel/projects/school/isa_project/utils/exceptions.h">
 			<Option target="isa_project"/>
 		</Unit>
-		<Unit filename="/Users/jandemel/shared_folder/school/isa_project/CMakeLists.txt">
+		<Unit filename="/home/jandemel/projects/school/isa_project/utils/network.cpp">
+			<Option target="isa_project"/>
+		</Unit>
+		<Unit filename="/home/jandemel/projects/school/isa_project/utils/network.h">
+			<Option target="isa_project"/>
+		</Unit>
+		<Unit filename="/home/jandemel/projects/school/isa_project/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/jandemel/projects/school/isa_project/FindPCAP.cmake">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

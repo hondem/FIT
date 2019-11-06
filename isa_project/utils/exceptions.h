@@ -12,6 +12,8 @@ using namespace std;
 
 // ========================= EXCEPTION CODES =========================
 const int ARG_EXCEPTION_CODE = 100;
+const int INTERFACE_EXCEPTION_CODE = 101;
+const int INTERNAL_ERROR_CODE = 102;
 // ====================== END OF EXCEPTION CODES =====================
 
 void closeApp(string&, int);
@@ -23,8 +25,9 @@ void closeApp(const char*, int);
  */
 class AppException : public std::runtime_error {
 public:
-    explicit AppException (const string &arg) : runtime_error(arg){ };
-    explicit AppException (const char *arg) : runtime_error(arg){ };
+    int code;
+    explicit AppException (const string &arg, const int code) : runtime_error(arg){ this->code = code; };
+    explicit AppException (const char *arg, const int code) : runtime_error(arg){ this->code = code; };
 };
 
 /**
@@ -32,8 +35,8 @@ public:
  */
 class ArgException : public AppException {
 public:
-    explicit ArgException (const string &arg) : AppException(arg){ };
-    explicit ArgException (const char *arg) : AppException(arg){ };
+    explicit ArgException (const string &arg) : AppException(arg, ARG_EXCEPTION_CODE){ };
+    explicit ArgException (const char *arg) : AppException(arg, ARG_EXCEPTION_CODE){ };
 };
 
 /**
@@ -41,8 +44,8 @@ public:
  */
 class InternalException : public AppException {
 public:
-    explicit InternalException (const string &arg) : AppException(arg){ };
-    explicit InternalException (const char *arg) : AppException(arg){ };
+    explicit InternalException (const string &arg) : AppException(arg, INTERNAL_ERROR_CODE){ };
+    explicit InternalException (const char *arg) : AppException(arg, INTERNAL_ERROR_CODE){ };
 };
 
 /**
@@ -50,8 +53,8 @@ public:
  */
 class InterfaceException : public AppException {
 public:
-    explicit InterfaceException (const string &arg) : AppException(arg){ };
-    explicit InterfaceException (const char *arg) : AppException(arg){ };
+    explicit InterfaceException (const string &arg) : AppException(arg, INTERFACE_EXCEPTION_CODE){ };
+    explicit InterfaceException (const char *arg) : AppException(arg, INTERFACE_EXCEPTION_CODE){ };
 };
 
 
