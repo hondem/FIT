@@ -11,16 +11,27 @@
 #include <pcap.h>
 
 #include "utils/exceptions.h"
+#include "utils/arg_parser.h"
 
 using namespace std;
 
-void testPacket(u_char *args, const struct pcap_pkthdr *header, const u_char *packet);
+
 class sniffer {
 private:
     /**
      * Interface to sniff on
      */
     string device;
+
+    /**
+     * Interface instance
+     */
+    pcap_if device_interface;
+
+    /**
+     * Program input arguments
+     */
+    Arguments args;
 
     /**
      * Create sniffer for target device
@@ -45,26 +56,21 @@ private:
     void packetReceived(const struct pcap_pkthdr* pkthdr,const u_char* packet);
 public:
     /**
-     * Default constructor
-     */
-    sniffer();
-
-    /**
      * Constructs sniffer with interface
      * @param interface
      */
-    explicit sniffer(string &targetDevice);
-
-    /**
-     * Sets interface that sniffer handles
-     * @param interface
-     */
-    void setInterface(string &targetDevice);
+    explicit sniffer(string &targetDevice, Arguments &args);
 
     /**
      * Start sniffing
      */
     void start();
+
+    /**
+     * Start sniffing on server
+     * @param args
+     */
+    static void sniffServer(Arguments args);
 };
 
 

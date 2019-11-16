@@ -11,10 +11,17 @@
 
 using namespace std;
 
-/* ================== FROM https://www.tcpdump.org/pcap.html ====================*/
+/**
+ * Inspired by
+ * https://www.tcpdump.org/pcap.html
+ * https://www.winpcap.org/docs/docs_412/html/group__wpcap__tut6.html
+ */
 
 /* Ethernet addresses are 6 bytes */
 #define ETHER_ADDR_LEN	6
+
+/* ethernet headers are always exactly 14 bytes */
+#define SIZE_ETHERNET 14
 
 /* Ethernet header */
 struct sniff_ethernet {
@@ -23,51 +30,59 @@ struct sniff_ethernet {
     u_short ether_type; /* IP? ARP? RARP? etc */
 };
 
-/* IP header */
-struct sniff_ip {
-    u_char ip_vhl;		/* version << 4 | header length >> 2 */
-    u_char ip_tos;		/* type of service */
-    u_short ip_len;		/* total length */
-    u_short ip_id;		/* identification */
-    u_short ip_off;		/* fragment offset field */
-#define IP_RF 0x8000		/* reserved fragment flag */
-#define IP_DF 0x4000		/* dont fragment flag */
-#define IP_MF 0x2000		/* more fragments flag */
-#define IP_OFFMASK 0x1fff	/* mask for fragmenting bits */
-    u_char ip_ttl;		/* time to live */
-    u_char ip_p;		/* protocol */
-    u_short ip_sum;		/* checksum */
-    struct in_addr ip_src,ip_dst; /* source and dest address */
+/* IPv6 header */
+struct sniff_ip_6{
+    unsigned int
+            version : 4,
+            traffic_class : 8,
+            flow_label : 20;
+    uint16_t length;
+    uint8_t  next_header;
+    uint8_t  hop_limit;
+    struct in6_addr src;
+    struct in6_addr dst;
 };
-#define IP_HL(ip)		(((ip)->ip_vhl) & 0x0f)
-#define IP_V(ip)		(((ip)->ip_vhl) >> 4)
 
-/* TCP header */
-typedef u_int tcp_seq;
-
-struct sniff_tcp {
-    u_short th_sport;	/* source port */
-    u_short th_dport;	/* destination port */
-    tcp_seq th_seq;		/* sequence number */
-    tcp_seq th_ack;		/* acknowledgement number */
-    u_char th_offx2;	/* data offset, rsvd */
-#define TH_OFF(th)	(((th)->th_offx2 & 0xf0) >> 4)
-    u_char th_flags;
-#define TH_FIN 0x01
-#define TH_SYN 0x02
-#define TH_RST 0x04
-#define TH_PUSH 0x08
-#define TH_ACK 0x10
-#define TH_URG 0x20
-#define TH_ECE 0x40
-#define TH_CWR 0x80
-#define TH_FLAGS (TH_FIN|TH_SYN|TH_RST|TH_ACK|TH_URG|TH_ECE|TH_CWR)
-    u_short th_win;		/* window */
-    u_short th_sum;		/* checksum */
-    u_short th_urp;		/* urgent pointer */
+/* UDP header */
+struct sniff_udp{
+    int16_t sport;          // Source port
+    int16_t dport;          // Destination port
+    int16_t len;            // Datagram length
+    int16_t crc;            // Checksum
 };
 
 /* ================== END OF: FROM https://www.tcpdump.org/pcap.html =================*/
+
+/**
+ * Struct for relay message
+ */
+struct relay_message {
+    int8_t msg_type;
+    int8_t hop_count;
+    int8_t link_address[16];
+    int8_t peer_address[16];
+};
+
+/**
+ * Relay message option
+ */
+struct relay_message_option {
+    int16_t option;
+    int16_t option_length;
+    int8_t *message;
+};
+
+/**
+ * Link layer option
+ */
+struct link_layer_option {
+    int16_t option;
+    int16_t option_length;
+    int16_t link_layer_type;
+    int8_t link_layer_addr[6];
+};
+
+
 
 class network {
 public:
@@ -77,6 +92,58 @@ public:
      * @return
      */
     static vector<pcap_if_t> *getDevices(string &device);
+
+    /**
+     * Returns first IPv6 found
+     * @param device
+     * @return
+     */
+    static sockaddr_in6 *getDeviceIPV6GlobAddress(pcap_if *device);
+
+    /**
+     * Returns data payload of Ethernet frame
+     * @param packet
+     * @return
+     */
+    static sniff_ethernet *getEthernet(u_char *packet);
+
+    /**
+     * Returns UDP header
+     * @param packet
+     * @return
+     */
+    static sniff_udp *getUDP(u_char *packet);
+
+    /**
+     * Returns data payload of IP packet
+     * @param packet
+     * @return
+     */
+    static sniff_ip_6 *getIP(u_char *packet);
+
+    /**
+     * Returns data payload of UDP packet
+     * @param packet
+     * @return
+     */
+    static char *getPayload(u_char *packet);
+
+    /**
+     * Returns length of data payload from UDP packet
+     * @param packet
+     * @return
+     */
+    static int16_t getPayloadLength(u_char *packet);
+
+    /**
+     * Serialize relay message
+     * @param r_relay_msg
+     * @param r_relay_msg_option
+     * @param r_ll_option
+     * @return
+     */
+    static int8_t *serializeMessage(relay_message *r_relay_msg, relay_message_option *r_relay_msg_option,
+                                    link_layer_option *r_ll_option, relay_message_option *r_interface_id_option, int16_t *message_length);
 };
 
 

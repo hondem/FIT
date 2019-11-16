@@ -1,5 +1,6 @@
 #include <vector>
-#include <string>
+#include <thread>
+
 /**
  * Including utilities
  */
@@ -19,14 +20,19 @@ int main(int argc, char *argv[]) {
 
     try {
         parsedArgs = arg_parser::Parse(argc, argv);
-    } catch (ArgException &e){
+
+        arg_parser::DumpArguments(parsedArgs);
+
+        // Start sniffing RELAY <-> SERVER
+        thread response_sniffer(sniffer::sniffServer, parsedArgs);
+
+        // Start sniffing CLIENT <-> RELAY
+        sniffer *test = new sniffer(parsedArgs.interface, parsedArgs);
+        test->start();
+
+    } catch (AppException &e){
         closeApp(e.what(), e.code);
     }
-
-    arg_parser::DumpArguments(parsedArgs);
-
-    sniffer *test = new sniffer(parsedArgs.interface);
-    test->start();
 
     return 0;
 }

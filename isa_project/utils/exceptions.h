@@ -14,11 +14,12 @@ using namespace std;
 const int ARG_EXCEPTION_CODE = 100;
 const int INTERFACE_EXCEPTION_CODE = 101;
 const int INTERNAL_ERROR_CODE = 102;
+const int NETWORK_EXCEPTION_CODE = 103;
 // ====================== END OF EXCEPTION CODES =====================
 
-void closeApp(string&, int);
-void closeApp(char*, int);
-void closeApp(const char*, int);
+void closeApp(string &message, int code);
+void closeApp(char *message, int code);
+void closeApp(const char *message, int code);
 
 /**
  * Base class for application exceptions
@@ -55,6 +56,15 @@ class InterfaceException : public AppException {
 public:
     explicit InterfaceException (const string &arg) : AppException(arg, INTERFACE_EXCEPTION_CODE){ };
     explicit InterfaceException (const char *arg) : AppException(arg, INTERFACE_EXCEPTION_CODE){ };
+};
+
+/**
+ * Throw when network error occurs
+ */
+class NetworkException : public AppException {
+public:
+    explicit NetworkException (const string &arg) : AppException(arg, NETWORK_EXCEPTION_CODE){ };
+    explicit NetworkException (const char *arg) : AppException(arg, NETWORK_EXCEPTION_CODE){ };
 };
 
 

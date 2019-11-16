@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/isa_project.dir/main.cpp.o"
+  "CMakeFiles/isa_project.dir/relay.cpp.o"
   "CMakeFiles/isa_project.dir/sniffer.cpp.o"
   "CMakeFiles/isa_project.dir/utils/arg_parser.cpp.o"
   "CMakeFiles/isa_project.dir/utils/exceptions.cpp.o"

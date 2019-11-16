@@ -150,6 +150,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+relay.o: relay.cpp.o
+
+.PHONY : relay.o
+
+# target to build an object file
+relay.cpp.o:
+	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/relay.cpp.o
+.PHONY : relay.cpp.o
+
+relay.i: relay.cpp.i
+
+.PHONY : relay.i
+
+# target to preprocess a source file
+relay.cpp.i:
+	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/relay.cpp.i
+.PHONY : relay.cpp.i
+
+relay.s: relay.cpp.s
+
+.PHONY : relay.s
+
+# target to generate assembly for a file
+relay.cpp.s:
+	$(MAKE) -f CMakeFiles/isa_project.dir/build.make CMakeFiles/isa_project.dir/relay.cpp.s
+.PHONY : relay.cpp.s
+
 sniffer.o: sniffer.cpp.o
 
 .PHONY : sniffer.o
@@ -270,6 +297,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... relay.o"
+	@echo "... relay.i"
+	@echo "... relay.s"
 	@echo "... sniffer.o"
 	@echo "... sniffer.i"
 	@echo "... sniffer.s"

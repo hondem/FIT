@@ -6,8 +6,16 @@ CMakeFiles/isa_project.dir/main.cpp.o: ../sniffer.h
 CMakeFiles/isa_project.dir/main.cpp.o: ../utils/arg_parser.h
 CMakeFiles/isa_project.dir/main.cpp.o: ../utils/exceptions.h
 
+CMakeFiles/isa_project.dir/relay.cpp.o: ../relay.cpp
+CMakeFiles/isa_project.dir/relay.cpp.o: ../relay.h
+CMakeFiles/isa_project.dir/relay.cpp.o: ../utils/arg_parser.h
+CMakeFiles/isa_project.dir/relay.cpp.o: ../utils/exceptions.h
+CMakeFiles/isa_project.dir/relay.cpp.o: ../utils/network.h
+
+CMakeFiles/isa_project.dir/sniffer.cpp.o: ../relay.h
 CMakeFiles/isa_project.dir/sniffer.cpp.o: ../sniffer.cpp
 CMakeFiles/isa_project.dir/sniffer.cpp.o: ../sniffer.h
+CMakeFiles/isa_project.dir/sniffer.cpp.o: ../utils/arg_parser.h
 CMakeFiles/isa_project.dir/sniffer.cpp.o: ../utils/exceptions.h
 CMakeFiles/isa_project.dir/sniffer.cpp.o: ../utils/network.h
 

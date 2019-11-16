@@ -87,6 +87,12 @@
 		<Unit filename="/home/jandemel/projects/school/isa_project/main.cpp">
 			<Option target="isa_project"/>
 		</Unit>
+		<Unit filename="/home/jandemel/projects/school/isa_project/relay.cpp">
+			<Option target="isa_project"/>
+		</Unit>
+		<Unit filename="/home/jandemel/projects/school/isa_project/relay.h">
+			<Option target="isa_project"/>
+		</Unit>
 		<Unit filename="/home/jandemel/projects/school/isa_project/sniffer.cpp">
 			<Option target="isa_project"/>
 		</Unit>
