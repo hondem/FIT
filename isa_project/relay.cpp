@@ -1,6 +1,10 @@
-//
-// Created by root on 11.11.19.
-//
+/**
+ * Author: Jan Demel
+ * Project: ISA DHCPv6 relay with MAC injection support
+ * Compiler: gcc version 9.2.1 20191008
+ * File name: relay.cpp
+ * Created: 11. 11. 2019
+ */
 
 #include "relay.h"
 
@@ -52,7 +56,8 @@ void relay::receiveMessage(char *payload, socklen_t buffer_size, Arguments &args
         int16_t option_length = ntohs(*((int16_t*) option + 1)); // Length of option
 
         if(option_id == 18){ // Option is Interface ID
-            interface_name = (char*)malloc(sizeof(char) * option_length);
+            interface_name = (char*)malloc(sizeof(char) * option_length + 1);
+            memset(interface_name, 0, option_length + 1);
             memcpy(interface_name, option + 4, option_length);
             interface_name_length = option_length;
         } else if(option_id == 9){ // Option is Relay message
@@ -99,14 +104,6 @@ void relay::receiveMessage(char *payload, socklen_t buffer_size, Arguments &args
     relay::sendMessageToClient(interface_name, interface_name_length, p_relay_message, p_relay_message_option);
 }
 
-void printArrays(char *array, size_t length){
-    for(int i = 0; i < length; i++){
-        printf("%x ", array[i]);
-    }
-    printf("\n");
-    fflush(stdout);
-}
-
 void relay::sendMessageToClient(char *interface_name, size_t interface_name_length,
         relay_message *p_relay_message, relay_message_option *p_relay_message_option) {
     if(p_relay_message == nullptr) throw NetworkException("Failed to parse RELAY REPLY MESSAGE");
@@ -127,8 +124,10 @@ void relay::sendMessageToClient(char *interface_name, size_t interface_name_leng
     memset(&interface, 0, sizeof(interface));
 
     snprintf(interface.ifr_name, sizeof(interface.ifr_name), "%s", interface_name);
-    if(setsockopt(sock, SOL_SOCKET, SO_BINDTODEVICE, (const void*) &interface, sizeof(ifreq)) < 0)
+
+    if(setsockopt(sock, SOL_SOCKET, SO_BINDTODEVICE, (const void*) &interface, sizeof(ifreq))){
         throw NetworkException("Failed to bind socket");
+    }
 
     if(sendto(sock, p_relay_message_option->message, 84, 0, (sockaddr*) &client, sizeof(sockaddr_in6)) == -1){
         perror("ERROR");

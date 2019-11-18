@@ -6,24 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/jandemel/projects/school/isa_project/main.cpp
-vector
--
-map
--
-thread
--
-utils/arg_parser.h
-/home/jandemel/projects/school/isa_project/utils/arg_parser.h
-utils/exceptions.h
-/home/jandemel/projects/school/isa_project/utils/exceptions.h
-utils/network.h
-/home/jandemel/projects/school/isa_project/utils/network.h
-sniffer.h
-/home/jandemel/projects/school/isa_project/sniffer.h
-syslog.h
--
-
 /home/jandemel/projects/school/isa_project/relay.cpp
 relay.h
 /home/jandemel/projects/school/isa_project/relay.h
@@ -31,14 +13,20 @@ stdio.h
 -
 cstring
 -
+
+/home/jandemel/projects/school/isa_project/relay.h
 net/if.h
+-
+netinet/in.h
+-
+sys/socket.h
+-
+arpa/inet.h
 -
 unistd.h
 -
 syslog.h
 -
-
-/home/jandemel/projects/school/isa_project/relay.h
 utils/network.h
 /home/jandemel/projects/school/isa_project/utils/network.h
 utils/arg_parser.h
@@ -47,20 +35,6 @@ utils/exceptions.h
 /home/jandemel/projects/school/isa_project/utils/exceptions.h
 map
 -
-
-/home/jandemel/projects/school/isa_project/sniffer.h
-string
--
-cstring
--
-vector
--
-pcap.h
--
-utils/exceptions.h
-/home/jandemel/projects/school/isa_project/utils/exceptions.h
-utils/arg_parser.h
-/home/jandemel/projects/school/isa_project/utils/arg_parser.h
 
 /home/jandemel/projects/school/isa_project/utils/arg_parser.h
 string
@@ -78,5 +52,13 @@ pcap.h
 string
 -
 vector
+-
+net/if.h
+-
+netinet/in.h
+-
+sys/socket.h
+-
+arpa/inet.h
 -
 

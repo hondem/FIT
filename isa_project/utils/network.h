@@ -1,6 +1,10 @@
-//
-// Created by jandemel on 05.11.19.
-//
+/**
+ * Author: Jan Demel
+ * Project: ISA DHCPv6 relay with MAC injection support
+ * Compiler: gcc version 9.2.1 20191008
+ * File name: network.h
+ * Created: 5. 11. 2019
+ */
 
 #ifndef ISA_PROJECT_NETWORK_H
 #define ISA_PROJECT_NETWORK_H
@@ -27,6 +31,15 @@ using namespace std;
 
 /* ethernet headers are always exactly 14 bytes */
 #define SIZE_ETHERNET 14
+
+/* DHCP MESSAGES */
+#define DHCP_SOLICIT 1
+#define DHCP_REQUEST 3
+#define DHCP_CONFIRM 4
+#define DHCP_RENEW 5
+#define DHCP_REBIND 6
+#define DHCP_DECLINE 9
+#define DHCP_INFORMATION_REQUEST 11
 
 /* Ethernet header */
 struct sniff_ethernet {

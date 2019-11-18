@@ -1,6 +1,10 @@
-//
-// Created by jandemel on 05.11.19.
-//
+/**
+ * Author: Jan Demel
+ * Project: ISA DHCPv6 relay with MAC injection support
+ * Compiler: gcc version 9.2.1 20191008
+ * File name: sniffer.cpp
+ * Created: 5. 11. 2019
+ */
 
 #include <netinet/in.h>
 #include <sys/socket.h>
@@ -81,13 +85,13 @@ void sniffer::packetReceived(const pcap_pkthdr *pkthdr, const u_char *packet) {
 
     // We handle only some MSG_TYPEs
     if(!
-        (*((int8_t*)payload) == 1 || // Solicit
-        *((int8_t*)payload) == 3 || // Request
-        *((int8_t*)payload) == 4 || // Confirm
-        *((int8_t*)payload) == 5 || // Renew
-        *((int8_t*)payload) == 6 || // Rebind
-        *((int8_t*)payload) == 9 || // Decline
-        *((int8_t*)payload) == 11) // Information-request
+        (*((int8_t*)payload) == DHCP_SOLICIT || // Solicit
+        *((int8_t*)payload) == DHCP_REQUEST || // Request
+        *((int8_t*)payload) == DHCP_CONFIRM || // Confirm
+        *((int8_t*)payload) == DHCP_RENEW || // Renew
+        *((int8_t*)payload) == DHCP_REBIND || // Rebind
+        *((int8_t*)payload) == DHCP_DECLINE || // Decline
+        *((int8_t*)payload) == DHCP_INFORMATION_REQUEST) // Information-request
     ) return;
 
     // Adding <IP, MAC> pair to global variable (we need it because of -d -l opts)

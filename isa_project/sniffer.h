@@ -1,6 +1,10 @@
-//
-// Created by jandemel on 05.11.19.
-//
+/**
+ * Author: Jan Demel
+ * Project: ISA DHCPv6 relay with MAC injection support
+ * Compiler: gcc version 9.2.1 20191008
+ * File name: sniffer.h
+ * Created: 5. 11. 2019
+ */
 
 #ifndef ISA_PROJECT_SNIFFER_H
 #define ISA_PROJECT_SNIFFER_H

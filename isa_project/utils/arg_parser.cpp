@@ -1,7 +1,10 @@
-//
-// Created by Jan Demel on 16/10/2019.
-//
-
+/**
+ * Author: Jan Demel
+ * Project: ISA DHCPv6 relay with MAC injection support
+ * Compiler: gcc version 9.2.1 20191008
+ * File name: arg_parser.cpp
+ * Created: 16. 10. 2019
+ */
 #include "arg_parser.h"
 #include <cstdio>
 #include <sstream>

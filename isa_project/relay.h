@@ -1,6 +1,10 @@
-//
-// Created by root on 11.11.19.
-//
+/**
+ * Author: Jan Demel
+ * Project: ISA DHCPv6 relay with MAC injection support
+ * Compiler: gcc version 9.2.1 20191008
+ * File name: relay.h
+ * Created: 11. 11. 2019
+ */
 
 #ifndef ISA_PROJECT_RELAY_H
 #define ISA_PROJECT_RELAY_H
@@ -20,11 +24,6 @@
 
 extern map<string, string> GLOB_IP_MAC;
 
-/*char macStr[18];
-    int array[6] = {0x00, 0x0d, 0x3f, 0xcd, 0x02, 0x5f};
-
-    snprintf(macStr, sizeof(macStr), "%02x:%02x:%02x:%02x:%02x:%02x",
-             array[0], array[1], array[2], array[3], array[4], array[5]);*/
 class relay {
 public:
     /**

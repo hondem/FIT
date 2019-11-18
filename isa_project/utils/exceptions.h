@@ -1,6 +1,10 @@
-//
-// Created by Jan Demel on 17/10/2019.
-//
+/**
+ * Author: Jan Demel
+ * Project: ISA DHCPv6 relay with MAC injection support
+ * Compiler: gcc version 9.2.1 20191008
+ * File name: exceptions.h
+ * Created: 17. 10. 2019
+ */
 
 #ifndef ISA_PROJECT_EXCEPTIONS_H
 #define ISA_PROJECT_EXCEPTIONS_H
