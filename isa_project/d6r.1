@@ -1,0 +1,36 @@
+.TH D6R 1
+.SH NAME
+d6r \- DHCPv6 relay with Client Link-Layer Address option
+.SH SYNOPSIS
+.B d6r
+\fB\-s\fR \fIserver\fR
+[\fB\-i\fR \fIinterface\fR]
+[\fB\-d\fR]
+[\fB\-l\fR]
+.SH DESCRIPTION
+.B Program
+is DHCPv6 relay that forwards packet of certain type from client to server and sends back the response. Useful in
+subnets without DHCPv6 server.
+.SH OPTIONS
+.TP
+.BR \-s\ \fIserver\fR
+IPv6 address of DHCPv6 server that relay should forward messages to.
+.TP
+.BR \-i\ \fIinterface\fR
+If set, relay will only listen to this interface. Default listen to all.
+.TP
+.BR \-d
+If set, program will output pair of <IP_ADDRESS, MAC_ADDRESS>, where IP_ADDRESS is address assigned by server and mac address is client's physical address to STDOUT.
+.TP
+.BR \-l
+If set, program will output pair of <IP_ADDRESS, MAC_ADDRESS>, where IP_ADDRESS is address assigned by server and mac address is client's physical address to SYSLOG.
+.SH ERROR CODES
+When exception occurs, detailed message is in STDERR.
+.TP
+100\ \-\ Failed to parse arguments
+.TP
+101\ \-\ Interface error
+.TP
+102\ \-\ Internal error
+.TP
+103\ \-\ Network error
