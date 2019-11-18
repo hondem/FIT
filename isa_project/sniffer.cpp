@@ -3,9 +3,12 @@
 //
 
 #include <netinet/in.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <net/if.h>
+
 #include "sniffer.h"
 #include "relay.h"
-
 #include "utils/network.h"
 
 sniffer::sniffer(string &targetDevice, Arguments &args) {
@@ -19,7 +22,7 @@ void sniffer::start() {
     char errbuf[PCAP_ERRBUF_SIZE]; // LIBPCAP error buffer
 
     try{
-        // Get target devices that are relevant for us
+        // Get target device
         devices = network::getDevices(this->device);
         if(devices->empty()) throw InterfaceException("Interface not usable\n");
 
@@ -41,15 +44,13 @@ void sniffer::start() {
     } catch (AppException &e){
         closeApp(e.what(), e.code);
     }
-
-    printf("Hi, im here\n");
 }
 
 pcap_t *sniffer::getHandle(char *targetDevice, char *errbuf) {
     if(targetDevice == NULL) throw InternalException("Trying to sniff on undefined interface\n");
-    printf("\nStarting sniffing on: %s\n\n", targetDevice);
     pcap_t *handle = pcap_open_live(targetDevice, BUFSIZ, 1, 1000, errbuf);
     if(handle == NULL) throw InterfaceException("Couldn't open device\n");
+    return handle;
 }
 
 void sniffer::setFilter(pcap_t *handle, char *filterExpression) {
@@ -78,6 +79,29 @@ void sniffer::packetReceived(const pcap_pkthdr *pkthdr, const u_char *packet) {
     int16_t payload_length = network::getPayloadLength((u_char*) packet) - 8;
     char *payload = network::getPayload((u_char*) packet);
 
+    // We handle only some MSG_TYPEs
+    if(!
+        (*((int8_t*)payload) == 1 || // Solicit
+        *((int8_t*)payload) == 3 || // Request
+        *((int8_t*)payload) == 4 || // Confirm
+        *((int8_t*)payload) == 5 || // Renew
+        *((int8_t*)payload) == 6 || // Rebind
+        *((int8_t*)payload) == 9 || // Decline
+        *((int8_t*)payload) == 11) // Information-request
+    ) return;
+
+    // Adding <IP, MAC> pair to global variable (we need it because of -d -l opts)
+    u_char *mac_address = (u_char*) ethernet_header->ether_shost;
+    char macStr[18];
+    snprintf(macStr, sizeof(macStr), "%02x:%02x:%02x:%02x:%02x:%02x",
+             *mac_address, *(mac_address + 1), *(mac_address + 2), *(mac_address + 3), *(mac_address + 4), *(mac_address + 5)
+    );
+
+    char ipStr[INET6_ADDRSTRLEN];
+    inet_ntop(AF_INET6, &ipv6_header->src, ipStr, INET6_ADDRSTRLEN);
+
+    GLOB_IP_MAC.insert(pair<string, string>(string(ipStr), string(macStr)));
+
     // Setting up relay_forward_message
     p_relay_msg->msg_type = 12;
     p_relay_msg->hop_count = 0;
@@ -100,6 +124,7 @@ void sniffer::packetReceived(const pcap_pkthdr *pkthdr, const u_char *packet) {
     p_interface_id_option->option_length = htons(this->device.size());
     p_interface_id_option->message = (int8_t*) this->device.c_str();
 
+
     relay::sendMessage(p_relay_msg, p_relay_msg_option, p_ll_option, p_interface_id_option, this->args);
 }
 
@@ -118,14 +143,15 @@ void sniffer::sniffServer(Arguments args) {
     server.sin6_addr = in6addr_any;
     socklen_t len = sizeof(server);
 
-    char buffer[BUFFER_SIZE];
+    char *buffer = (char*) malloc(sizeof(char) * BUFFER_SIZE);
+    memset(buffer, 0, BUFFER_SIZE);
 
     if(bind(sock, (sockaddr*) &server, len) == -1) throw NetworkException("Failed to bind socket");
 
     while(true){
         i = recvfrom(sock, buffer, BUFFER_SIZE, 0, (sockaddr*) &server, &len);
         if(i == -1) throw NetworkException("Failed to recieve packet");
-        else if(i > 0) relay::receiveMessage(buffer, BUFFER_SIZE);
+        else if(i > 0) relay::receiveMessage(buffer, BUFFER_SIZE, args);
     }
 }
 

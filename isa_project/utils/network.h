@@ -9,6 +9,11 @@
 #include <string>
 #include <vector>
 
+#include <net/if.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+
 using namespace std;
 
 /**
@@ -41,6 +46,14 @@ struct sniff_ip_6{
     uint8_t  hop_limit;
     struct in6_addr src;
     struct in6_addr dst;
+};
+
+/**
+ * IPv6 extension header
+ */
+struct ipv6_extension_header {
+    uint8_t next_header;
+    uint8_t length;
 };
 
 /* UDP header */
@@ -136,6 +149,13 @@ public:
     static int16_t getPayloadLength(u_char *packet);
 
     /**
+     * Returns IP header length
+     * @param packet
+     * @return
+     */
+    static int16_t getIPHeaderLength(u_char *packet);
+
+    /**
      * Serialize relay message
      * @param r_relay_msg
      * @param r_relay_msg_option
@@ -144,6 +164,18 @@ public:
      */
     static int8_t *serializeMessage(relay_message *r_relay_msg, relay_message_option *r_relay_msg_option,
                                     link_layer_option *r_ll_option, relay_message_option *r_interface_id_option, int16_t *message_length);
+
+    /**
+     * Prints array
+     * @param array
+     * @param length
+     */
+    static void printArray(int8_t *array, int16_t length);
+
+    /**
+     * Get IPv6 address from different DHCPv6 options
+     */
+    static int8_t *getIPv6FromDHCPMessage(int8_t *dhcp_message, int16_t dhcp_message_length, int8_t *prefix);
 };
 
 

@@ -5,6 +5,7 @@
 #include "network.h"
 #include "exceptions.h"
 #include <cstring>
+#include <stdio.h>
 
 vector<pcap_if_t> *network::getDevices(string &device) {
     vector<pcap_if_t> *devices = new vector<pcap_if_t>();
@@ -57,11 +58,11 @@ sockaddr_in6 *network::getDeviceIPV6GlobAddress(pcap_if *device) {
 }
 
 char *network::getPayload(u_char *packet) {
-    return (char *)(packet + SIZE_ETHERNET + 40 + 8); // TODO: Constants shouldn't be there because of optional size!
+    return (char *)(packet + SIZE_ETHERNET + network::getIPHeaderLength(packet) + 8);
 }
 
 int16_t network::getPayloadLength(u_char *packet) {
-    return ntohs(*((int16_t*)(packet + SIZE_ETHERNET + 40 + 4)));
+    return ntohs(*((int16_t*)(packet + SIZE_ETHERNET + network::getIPHeaderLength(packet) + 4)));
 }
 
 sniff_ethernet *network::getEthernet(u_char *packet) {
@@ -72,11 +73,27 @@ sniff_ip_6 *network::getIP(u_char *packet) {
     return (sniff_ip_6*)(packet + SIZE_ETHERNET);
 }
 
-sniff_udp *network::getUDP(u_char *packet) {
-    return (sniff_udp*)(packet + SIZE_ETHERNET + 40);
+int16_t network::getIPHeaderLength(u_char *packet) {
+    int16_t total_length = 40;
+    sniff_ip_6 *ip_header = network::getIP(packet);
+
+    if(ip_header->next_header != 17){
+        ipv6_extension_header *extension_header = (ipv6_extension_header*) (((int8_t*)ip_header) + total_length);
+
+        while(extension_header->next_header != 17){
+            total_length += extension_header->length + 8;
+            extension_header = (ipv6_extension_header*) (((int8_t*)ip_header) + total_length);
+        }
+    }
+
+    return total_length;
 }
 
-void printArray(int8_t *array, int16_t length){
+sniff_udp *network::getUDP(u_char *packet) {
+    return (sniff_udp*)(packet + SIZE_ETHERNET + network::getIPHeaderLength(packet));
+}
+
+void network::printArray(int8_t *array, int16_t length){
     for(int16_t i = 0; i < length; i++){
         printf("%02X ", array[i]);
     }
@@ -110,18 +127,74 @@ int8_t *network::serializeMessage(relay_message *r_relay_msg, relay_message_opti
     int8_t *message = (int8_t*) malloc(total_length * sizeof(int8_t));
     clearArray(message, total_length);
 
-    //printArray(message, total_length);
     memcpy(message, r_relay_msg, sizeof(relay_message)); // Copying relay_message header
-    //printArray(message, total_length);
     memcpy(message + sizeof(relay_message), r_relay_msg_option, 4); // Copying relay_message_option header
-    //printArray(message, total_length);
     memcpy(message + sizeof(relay_message) + 4, r_relay_msg_option->message, relay_msg_option_length); // Copying relay_message_option_content
-    //printArray(message, total_length);
     memcpy(message + sizeof(relay_message) + 4 + relay_msg_option_length, r_ll_option, sizeof(link_layer_option));
-    //printArray(message, total_length);
     memcpy(message + sizeof(relay_message) + 4 + relay_msg_option_length + sizeof(link_layer_option), r_interface_id_option, 4); // Copying interface_id_option header
-
     memcpy(message + sizeof(relay_message) + 4 + relay_msg_option_length + sizeof(link_layer_option) + 4, r_interface_id_option->message, interface_id_option_length); // Copying interface_id_option header
 
     return message;
+}
+
+int8_t *network::getIPv6FromDHCPMessage(int8_t *dhcp_message, int16_t dhcp_message_length, int8_t *prefix) {
+    int8_t *option = dhcp_message + 4; // First option of DHCPv6 MESSAGE!
+
+    // We are looking for IA-NON-TEMPORARY OR IA-TEMPORARY OR IA-PD
+    while(!(
+            ntohs(*((int16_t*) option)) == 3 ||
+            ntohs(*((int16_t*) option)) == 4 ||
+            ntohs(*((int16_t*) option)) == 25
+    )){
+        option = option + 4 + *((int16_t*) option + 1);
+
+        if(option > (dhcp_message + dhcp_message_length)) return nullptr;
+    }
+
+    if(ntohs(*((int16_t*) option)) == 3){ // If we found IA-NON-TEMPORARY
+        option = option + 16; // Skipping header size to get another headers
+
+        // We are looking for IA ADDRESS OPTION
+        while(!(ntohs(*((int16_t*) option)) == 5)){
+            option = option + 4 + *((int16_t*) option + 1);
+
+            if(option > (dhcp_message + dhcp_message_length)) return nullptr;
+        }
+
+        // If we found IA ADDRESS OPTION
+        if(ntohs(*((int16_t*) option)) == 5){
+            return (option + 4);
+        }
+    } else if(ntohs(*((int16_t*) option)) == 3){ // If we found IA-TEMPORARY
+        option = option + 8; // Skipping header
+
+        // We are looking for IA ADDRESS OPTION
+        while(!(ntohs(*((int16_t*) option)) == 5)){
+            option = option + 4 + *((int16_t*) option + 1);
+
+            if(option > (dhcp_message + dhcp_message_length)) return nullptr;
+        }
+
+        // If we found IA ADDRESS OPTION
+        if(ntohs(*((int16_t*) option)) == 5){
+            return (option + 4);
+        }
+    } else if(ntohs(*((int16_t*) option)) == 25){ // If we found IA-PD
+        option = option + 16; // Skipping header
+
+        // We are looking for IA-Prefix-option
+        while(!(ntohs(*((int16_t*) option)) == 26)){
+            option = option + 4 + *((int16_t*) option + 1);
+
+            if(option > (dhcp_message + dhcp_message_length)) return nullptr;
+        }
+
+        // If we found IA-Prefix-option
+        if(ntohs(*((int16_t*) option)) == 26){
+            *prefix = *(option + 12);
+            return (option + 13);
+        }
+    }
+
+    return nullptr;
 }
