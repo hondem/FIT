@@ -1,0 +1,313 @@
+\documentclass[a4paper, 11pt]{article}
+    \usepackage[left=2cm, top=3cm, text={17cm, 24cm}]{geometry}
+    \usepackage[czech]{babel}
+    \usepackage[utf8]{inputenc}
+    \usepackage{times}
+    \usepackage{hyperref}
+    \usepackage{multirow}
+    \usepackage[ruled, czech, linesnumbered, noline, longend]{algorithm2e}
+    \usepackage{amsmath}
+    \usepackage{graphics}
+    \usepackage{pdflscape}
+    \usepackage{ctable}
+
+\begin{document}
+\catcode`\-=12
+
+    \begin{titlepage}
+        \begin{center}
+            {\Huge\textsc{
+                Vysoké učení technické v~Brně\\
+            }}
+            {\huge\textsc{
+                Fakulta informačních technologií\\
+            }}
+            \vspace{\stretch{0.382}}
+    		{\LARGE
+    			Typografie a publikování – 3. projekt \\
+    		}
+    		{\Huge Tabulky a obrázky\\}
+    		\vspace{\stretch{0.618}}
+    		{\Large
+    			\today
+    			\hfill
+    			Jan Demel (xdemel01)
+    		}
+        \end{center}
+    \end{titlepage}
+    
+    \section{Úvodní strana}
+    Název práce umístěte do zlatého řezu a nezapomeňte uvést dnešní datum a vaše jméno a příjmení.
+    
+    \section{Tabulky}
+    Pro sázení tabulekm ůžeme použít buď prostředí \texttt{tabbing} nebo prostředí \texttt{tabular}.
+    
+    \subsection{Prostředí \texttt{tabbing}}
+    Při použití \texttt{tabbing} vypadá tabulka následovně:
+    \begin{tabbing}
+        Vodní melouny \quad \= Cena \quad \= Množství \kill
+        \textbf{Ovoce} \> \textbf{Cena}  \> \textbf{Množství} \\
+        Jablka \> 25,90 \> 3 kg \\
+        Hrušky \> 27,40 \> 2,5 kg \\
+        Vodní melouny \> 35,– \> 1 kus \\
+    \end{tabbing}
+
+    \noindent Toto prostředí se dá také použít pro sázení algoritmů, ovšem vhodnější je použít prostředí \texttt{algorithm} nebo \texttt{algorithm2e} (viz sekce \ref{algoritmhs}).
+    
+    \subsection{Prostředí \texttt{tabular}}
+    Další možností, jak vytvořit tabulku, je použít prostředí \texttt{tabular}. Tabulky pak budou vypadat takto\footnote{Kdyby byl problem s \texttt{cline}, zkuste se podívat třeba sem: \href{http://www.abclinuxu.cz/tex/poradna/show/325037}{http://www.abclinuxu.cz/tex/poradna/show/325037}}:
+    
+    \hspace{0.2cm}
+    
+    \begin{center}
+    \begin{table}[h]
+        \centering
+    	\begin{tabular}{|c|c|c|}
+    		\hline 
+    		& \multicolumn{2}{c|}{\textbf{Cena}}\\ 
+    		\cline{2-3}
+    		\textbf{Měna} & \textbf{nákup} & \textbf{prodej}\\
+    		\hline
+    		EUR & 25,475 & 27,045\\
+    		GBP & 28,835 & 30,705\\
+    		USD & 22,943 & 24,357\\
+    		\hline
+		\end{tabular}
+    	\caption{Tabulka kurzů k dnešnímu dni}
+    	\label{first_table}
+    \end{table}
+    
+    \hspace{1cm}
+    
+    \begin{table}[h]
+	    \centering
+    	\begin{tabular}{|c|c|}
+    		\hline
+    		$A$ & $\neg{A}$\\
+    		\hline
+    		\textbf{P} & N\\
+    		\hline
+    		\textbf{O} & O\\
+    		\hline
+    		\textbf{X} & X\\
+    		\hline
+    		\textbf{N} & P\\
+    		\hline
+    	\end{tabular}
+    	\begin{tabular}{|c|c|c|c|c|c|}
+    		\hline
+    		\multicolumn{2}{|c|}{ \multirow{2}{*}{$A \wedge B$}} & \multicolumn{4}{c|}{$B$}\\
+    		\cline{3-6}
+    		\multicolumn{2}{|c|}{~} & \textbf{P} & \textbf{O} & \textbf{X} & \textbf{N}\\
+    		\hline
+    		\multirow{4}{*}{A} & \textbf{P} & P & O & X & N\\
+    		\cline{2-6}
+    		~ & \textbf{O} & O & O & N & N\\
+    		\cline{2-6}
+    		~ & \textbf{X} & X & N & X & N\\
+    		\cline{2-6}
+    		~ & \textbf{N} & N & N & N & N\\
+    		\hline
+    	\end{tabular}
+    	\begin{tabular}{|c|c|c|c|c|c|}
+    		\hline
+    		\multicolumn{2}{|c|}{ \multirow{2}{*}{$A \vee B$}} & \multicolumn{4}{c|}{$B$}\\
+    		\cline{3-6}
+    		\multicolumn{2}{|c|}{~} & \textbf{P} & \textbf{O} & \textbf{X} & \textbf{N}\\
+    		\hline
+    		\multirow{4}{*}{A} & \textbf{P} & P & P & P & P\\
+    		\cline{2-6}
+    		~ & \textbf{O} & P & O & P & O\\
+    		\cline{2-6}
+    		~ & \textbf{X} & P & P & X & X\\
+    		\cline{2-6}
+    		~ & \textbf{N} & P & O & X & N\\
+    		\hline
+    	\end{tabular}
+    	\begin{tabular}{|c|c|c|c|c|c|}
+    		\hline
+    		\multicolumn{2}{|c|}{ \multirow{2}{*}{$A \rightarrow B$}} & \multicolumn{4}{c|}{$B$}\\
+    		\cline{3-6}
+    		\multicolumn{2}{|c|}{~} & \textbf{P} & \textbf{O} & \textbf{X} & \textbf{N}\\
+    		\hline
+    		\multirow{4}{*}{A} & \textbf{P} & P & O & X & N\\
+    		\cline{2-6}
+    		~ & \textbf{O} & P & O & P & O\\
+    		\cline{2-6}
+    		~ & \textbf{X} & P & P & X & X\\
+		    \cline{2-6}
+		    ~ & \textbf{N} & P & P & P & P\\
+		    \hline
+	    \end{tabular}
+
+	    \caption{Protože Kleeneho trojhodnotová logika už je \uv{zastaralá}, uvádíme si zde příklad čtyřhodnotové logiky}
+	    \label{second_table}
+    \end{table}
+    \end{center}
+    
+    \hspace{0.1cm}
+    
+    \pagebreak
+
+    \section{Algoritmy} \label{algoritmhs}
+    Pokud budeme chtít vysázet algoritmus, můžeme použít prostředí \texttt{algorithm}\footnote{Pro nápovědu, jak zacházet s prostředím \texttt{algorithm}, můžeme zkusit tuhle stránku:\\ \href{http://ftp.cstug.cz/pub/tex/CTAN/macros/latex/contrib/algorithms/algorithms.pdf}{http://ftp.cstug.cz/pub/tex/CTAN/macros/latex/contrib/algorithms/algorithms.pdf}.} nebo \texttt{algorithm2e}\footnote{Pro \texttt{algorithm2e} zase tuhle: \href{http://ftp.cstug.cz/pub/tex/CTAN/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf}{http://ftp.cstug.cz/pub/tex/CTAN/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf}.}.\linebreak Příklad použití prostředí \texttt{algorithm2e} viz Algoritmus 1.
+    
+    \hspace{0.05cm}
+    
+    \IncMargin{1cm}
+    \begin{algorithm}	
+    	\SetNlSty{}{}{:}
+    	\SetNlSkip{0.5cm}
+    	\SetAlgoNlRelativeSize{-1}
+    	\SetInd{0.4cm}{0.4cm}
+    
+    	\Indm\Indmm
+    	\KwIn{$ (X_{t - 1}, u_t, z_t) $}
+    	\KwOut{$ X_t $}
+    
+    	\BlankLine
+    
+    	\Indp\Indpp
+    	$ \overline{X_t} = X_t = 0 $ \\
+    	\For{$ k = 1\ \text{\emph{to}}\ M $}
+    	{
+    		$ x_t^{[k]} = \emph{sample\_motion\_model}(u_t, x_{t - 1}^{[k]}) $\\
+    		$\omega_t^{[k]} = \emph{measurement\_model}(z_t, x_{t}^{[k]}, m_{t - 1}) $\\
+    		$m_t^{[k]} = updated\_occupancy\_grid(z_t, x_{t}^{[k]}, m_{t - 1}^{[k]}) $\\
+    		$\overline{X_t} = \overline{X_t} + \langle x_x^{[m]}, \omega_t^{[m]} \rangle $ \newline
+    	}
+    	\For{$ k = 1\ \text{\emph{to}}\ M $}{
+    		$ \text{draw}\ i\ \text{with probability} \approx \omega_t^{[i]} $\\
+    		$\text{add}\ \langle x_x^{[k]}, m_t^{[k]} \rangle\ \text{to}\ X_t $\\
+    	}
+    	\Return{$ X_t $}
+    
+    	\caption{\textsc{FastSLAM}}
+    	\label{first_algorithm}
+    \end{algorithm}
+    
+    \section{Obrázky}
+    Do našich článků můžeme samozřejmě vkládat obrázky. Pokud je obrázkem fotografie, můžeme klidně použít bitmapový soubor. Pokud by to ale mělo být nějaké schéma nebo něco podobného, je dobrým zvykem takovýto obrázek vytvořit vektorově.
+    
+    \begin{center}
+        \begin{figure}[h]
+            \renewcommand{\arraystretch}{0}
+            \centering
+            \includegraphics[scale=0.3]{etiopan.eps}
+            \reflectbox{\includegraphics[scale=0.3]{etiopan.eps}}
+            
+            \caption{Malý Etiopánek a jeho bratříček}
+    	    \label{first_image}
+	    \end{figure}
+    \end{center}
+    
+    \pagebreak
+    
+    Rozdíl mezi vektorovým \dots
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.5]{oniisan.eps}
+        \caption{Vektorový obrázek}
+        \label{second_image}
+    \end{figure}
+    
+    \dots a bitmapovým obrázkem
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.8]{oniisan2.eps}
+        \caption{Bitmapový obrázek}
+        \label{third_image}
+    \end{figure}
+    
+    \noindent
+    se projeví například při zvětšení.
+    
+    Odkazy (nejen ty) na obrázku \ref{first_image}, \ref{second_image} a \ref{third_image}, na tabulky \ref{first_table} a \ref{second_table} a také na algoritmus \ref{first_algorithm} jsou udělány pomocí křížových odkazů. Pak je ovšem potřeba zdrojový soubor přeložit dvakrát.
+    
+    Vektorové obrázky lze vytvořit i přímo v \LaTeX u, například pomocí prostředí \texttt{picture}.
+    
+    \begin{landscape}
+        \begin{figure}
+            \centering
+                \begin{picture}(600, 400)
+                \put(0, 0){\framebox(600, 400){}}
+                
+                \linethickness{1mm}
+			    \put(50, 50){\line(1, 0){500}}
+			    
+			    \linethickness{0.4mm}
+			    \put(50, 50){\line(0, 1){200}}
+			    \put(550, 50){\line(0, 1){200}}
+			    \put(50, 250){\line(1, 0){500}}
+			    \put(50, 250){\line(1, 4){25}}
+			    \put(550, 250){\line(-1, 4){25}}
+			    \put(75, 350){\line(1, 0){450}}
+			    \put(50, 235){\framebox(500, 15)}
+			    
+			    
+			    \put(50, 50){\framebox(300, 100)}
+			    \put(50, 50){\framebox(15, 200)}
+			    \put(65, 50){\framebox(15, 100)}
+			    \put(80, 50){\framebox(15, 100)}
+			    \put(95, 50){\framebox(15, 100)}
+			    \put(110, 50){\framebox(15, 100)}
+			    \put(125, 50){\framebox(15, 100)}
+			    \put(140, 50){\framebox(15, 100)}
+			    \put(155, 50){\framebox(15, 100)}
+			    \put(170, 50){\framebox(15, 100)}
+			    \put(185, 50){\framebox(15, 100)}
+			    \put(200, 50){\framebox(15, 100)}
+			    \put(215, 50){\framebox(15, 100)}
+			    \put(230, 50){\framebox(15, 100)}
+			    \put(245, 50){\framebox(15, 100)}
+			    \put(260, 50){\framebox(15, 100)}
+			    \put(275, 50){\framebox(15, 100)}
+			    \put(290, 50){\framebox(15, 100)}
+			    \put(305, 50){\framebox(15, 100)}
+			    \put(320, 50){\framebox(15, 100)}
+			    \put(335, 50){\framebox(15, 100)}
+			    \put(350, 50){\framebox(15, 200)}
+			    
+			    \put(100, 150){\framebox(100, 75)}
+			    \put(105, 150){\framebox(40, 25)}
+			    \put(155, 150){\framebox(40, 25)}
+			    \put(105, 185){\framebox(40, 35)}
+			    \put(155, 185){\framebox(40, 35)}
+			    
+			    \put(400, 100){\framebox(110, 100)}
+			    \put(405, 105){\framebox(45, 40)}
+			    \put(460, 105){\framebox(45, 40)}
+			    \put(405, 155){\framebox(45, 40)}
+			    \put(460, 155){\framebox(45, 40)}
+			    
+			    \put(70, 300){\framebox(50, 80)}
+			    \put(70, 300){\framebox(40, 10)}
+			    \put(110, 300){\framebox(10, 10)}
+			    \put(70, 320){\framebox(40, 10)}
+			    \put(110, 320){\framebox(10, 10)}
+			    \put(70, 340){\framebox(40, 10)}
+			    \put(110, 340){\framebox(10, 10)}
+			    \put(70, 360){\framebox(40, 10)}
+			    \put(110, 360){\framebox(10, 10)}
+			    \put(70, 380){\framebox(40, 10)}
+			    \put(110, 380){\framebox(10, 10)}
+			    
+			    \put(70, 310){\framebox(10, 10)}
+			    \put(80, 310){\framebox(40, 10)}
+			    \put(70, 330){\framebox(10, 10)}
+			    \put(80, 330){\framebox(40, 10)}
+			    \put(70, 350){\framebox(10, 10)}
+			    \put(80, 350){\framebox(40, 10)}
+			    \put(70, 370){\framebox(10, 10)}
+			    \put(80, 370){\framebox(40, 10)}
+			    
+			    \put(550, 350){\oval(40, 40)}
+			    
+            \end{picture}
+            \caption{Vektorový obrázek domu, ve kterém občas žiju}
+            \label{my_house_drawing}
+        \end{figure}
+    \end{landscape}
+\end{document}

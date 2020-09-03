@@ -1,0 +1,389 @@
+// Mixin for mobile breakpoint
+@mixin mobile() {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+// ============= FONTS ==============
+@mixin default-font-style() {
+  font:{
+    family:Montserrat;
+    size:14px;
+  }
+}
+
+@mixin header-font-style() {
+  color:white;
+  text-transform:uppercase;
+  letter-spacing:0.4em;
+  text-align:center;
+  text-indent:0.4em;
+  font:{
+    family:Montserrat;
+    size:80px;
+    weight:lighter;
+  }
+
+  @include mobile(){
+    font-size:40px;
+  }
+}
+
+@mixin menu-anchor-style() {
+  color:white;
+  text-transform:uppercase;
+  letter-spacing:0.4em;
+  text-indent:0.4em;
+  text-decoration:none;
+  font:{
+    family:Montserrat;
+    size:12px;
+    weight:lighter;
+  }
+
+  &:hover,
+  &.active{
+    border-bottom:1px solid white;
+  }
+}
+
+@mixin header-2-font-style() {
+  color:black;
+  text-transform:uppercase;
+  letter-spacing:0.4em;
+  text-indent:0.4em;
+  text-align:center;
+  padding-bottom:30px;
+  font:{
+    family:Montserrat;
+    size:25px;
+    weight:lighter;
+  }
+}
+
+@mixin header-3-font-style() {
+  color:black;
+  text-transform:uppercase;
+  letter-spacing:0.4em;
+  text-indent:0.4em;
+  text-align:center;
+  font:{
+    family:Montserrat;
+    size:16px;
+    weight:lighter;
+  }
+}
+
+html, body {
+  margin:0px;
+  padding:0px;
+  @include default-font-style();
+}
+
+// Default content block
+.content{
+  max-width:1070px;
+  margin-left:auto;
+  margin-right:auto;
+  padding:80px 15px;
+
+  @include mobile() {
+    width:auto;
+    margin-left:15px;
+    margin-right:15px;
+  }
+}
+
+// Helper classes
+.text-center{
+  text-align:center;
+}
+
+.no-padding{
+  padding:0px !important;
+}
+
+a{
+  @include menu-anchor-style();
+}
+
+// Main navigation
+#nav{
+  position:absolute;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  padding:40px 0px;
+  transition:0.5s;
+
+  ul{
+    padding:0px;
+    margin:0px;
+    display:flex;
+
+    li{
+      list-style-type:none;
+      padding:0px 20px;
+      a{
+        padding:10px 0px;
+        @include menu-anchor-style();
+      }
+
+      @include mobile() {
+        padding:10px 10px;
+      }
+    }
+
+    @include mobile() {
+      display:none;
+      flex-direction:column;
+      width:100%;
+      padding:0px 25px;
+    }
+  }
+
+  // Mobile menu toggling button
+  .mobile-toggle{
+    @include mobile() {
+      width:100%;
+      height:30px;
+      position:relative;
+
+      .icon{
+        width:30px;
+        height:30px;
+        position:absolute;
+        right:20px;
+        background:{
+          image: url('../images/open-menu.png');
+          repeat:no-repeat;
+          position:center right;
+          size:30px;
+        }
+      }
+
+      &:hover{
+        cursor:pointer;
+      }
+    }
+  }
+
+  &.fixed {
+    position:fixed;
+    background-color:black;
+    box-shadow: 0px 6px 8px -2px rgba(0,0,0,0.75);
+  }
+
+  @include mobile() {
+    background-color:black;
+    padding:20px 0px;
+    flex-direction:column;
+  }
+}
+
+// Main page
+#front_page{
+  width:100%;
+  height:90vh;
+  background: rgba(0, 0, 0, .85) url('../images/bg_front_page.jpg');
+  background:{
+    size:cover;
+    blend-mode: multiply;
+  }
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  a{
+    h1{
+      @include header-font-style();
+    }
+
+    &:hover{
+      border:none;
+    }
+  }
+
+  @include mobile() {
+    background-position: center center;
+  }
+}
+
+// About me section
+#about_me{
+  text-align:center;
+  h2{
+    @include header-2-font-style();
+  }
+}
+
+// Experience section
+#experience{
+  background-color:black;
+  h2{
+    @include header-2-font-style();
+    color:white;
+  }
+
+  // Tabs navigation in experience section
+  #experience_nav{
+    ul{
+      display:flex;
+      margin:0px;
+      padding:0px;
+      li{
+        list-style-type:none;
+        padding-right:15px;
+        a{
+          @include menu-anchor-style();
+          font-size:14px;
+          text-transform:lowercase;
+        }
+      }
+
+      @include mobile() {
+        justify-content:center;
+      }
+    }
+  }
+
+  // Tabs in experience section
+  .tabs{
+    .tab{
+      margin-top:50px;
+      display:none;
+
+      .work_experience_item{
+        display:flex;
+        align-items:center;
+        width:100%;
+        padding:15px 0px;
+        .thumb{
+          img{
+            width:80px;
+            border-radius:50%;
+          }
+        }
+        .description{
+          color:white;
+          flex:1;
+          padding:0px 50px;
+
+          @include mobile() {
+            a{
+              letter-spacing:normal;
+            }
+          }
+        }
+        .date{
+          color:white;
+          min-width:250px;
+          text-align:right;
+
+          @include mobile() {
+            text-align:center;
+          }
+        }
+
+        @include mobile() {
+          flex-direction:column;
+        }
+      }
+
+      &.active{
+        display:block;
+      }
+    }
+  }
+}
+
+// Attended schools
+#education {
+  h2{
+    @include header-2-font-style();
+  }
+
+  .education-items{
+    display:flex;
+
+    .education-item{
+      flex:1;
+      padding:50px 30px 0px 30px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+
+      img{
+        width:100%;
+        max-width:150px;
+        height:auto;
+      }
+
+      .title{
+        margin-top:30px;
+        @include header-3-font-style();
+      }
+
+      .description{
+        @include default-font-style();
+      }
+    }
+
+    @include mobile() {
+      flex-direction:column;
+    }
+  }
+}
+
+// My skills & hobbies
+#skills {
+  background-color:black;
+  h2{
+    @include header-2-font-style();
+    color:white;
+  }
+
+  .skills-table{
+    display:flex;
+    flex-direction:column;
+    padding:0px 70px;
+
+    .skills-item{
+      display:flex;
+      margin-bottom:30px;
+      align-items:center;
+      .label{
+        flex:1;
+        color:white;
+        text-align:center;
+
+        @include mobile() {
+          padding-bottom:10px;
+        }
+      }
+
+      .value{
+        flex:2;
+        .value-inner-display{
+          height:30px;
+          background-color:white;
+        }
+      }
+
+      @include mobile() {
+        flex-direction:column;
+        align-items:stretch;
+      }
+    }
+  }
+}
+
+// Footer - for copyright & freepik claim
+#footer{
+  text-align:center;
+  padding:70px 0px;
+  a{
+    color:black;
+  }
+}

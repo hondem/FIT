@@ -1,0 +1,471 @@
+html, body {
+  margin: 0px;
+  padding: 0px;
+  font-family: Montserrat;
+  font-size: 14px;
+}
+
+.content {
+  max-width: 1070px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 80px 15px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: auto;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+a {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  text-decoration: none;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+a:hover, a.active {
+  border-bottom: 1px solid white;
+}
+
+#nav {
+  position: absolute;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 40px 0px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#nav ul {
+  padding: 0px;
+  margin: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#nav ul li {
+  list-style-type: none;
+  padding: 0px 20px;
+}
+
+#nav ul li a {
+  padding: 10px 0px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  text-decoration: none;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+#nav ul li a:hover, #nav ul li a.active {
+  border-bottom: 1px solid white;
+}
+
+@media (max-width: 768px) {
+  #nav ul li {
+    padding: 10px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  #nav ul {
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+    padding: 0px 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  #nav .mobile-toggle {
+    width: 100%;
+    height: 30px;
+    position: relative;
+  }
+  #nav .mobile-toggle .icon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 20px;
+    background-image: url("../images/open-menu.png");
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: 30px;
+  }
+  #nav .mobile-toggle:hover {
+    cursor: pointer;
+  }
+}
+
+#nav.fixed {
+  position: fixed;
+  background-color: black;
+  -webkit-box-shadow: 0px 6px 8px -2px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 6px 8px -2px rgba(0, 0, 0, 0.75);
+}
+
+@media (max-width: 768px) {
+  #nav {
+    background-color: black;
+    padding: 20px 0px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+#front_page {
+  width: 100%;
+  height: 90vh;
+  background: rgba(0, 0, 0, 0.85) url("../images/bg_front_page.jpg");
+  background-size: cover;
+  background-blend-mode: multiply;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#front_page a h1 {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  text-align: center;
+  text-indent: 0.4em;
+  font-family: Montserrat;
+  font-size: 80px;
+  font-weight: lighter;
+}
+
+@media (max-width: 768px) {
+  #front_page a h1 {
+    font-size: 40px;
+  }
+}
+
+#front_page a:hover {
+  border: none;
+}
+
+@media (max-width: 768px) {
+  #front_page {
+    background-position: center center;
+  }
+}
+
+#about_me {
+  text-align: center;
+}
+
+#about_me h2 {
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  text-align: center;
+  padding-bottom: 30px;
+  font-family: Montserrat;
+  font-size: 25px;
+  font-weight: lighter;
+}
+
+#experience {
+  background-color: black;
+}
+
+#experience h2 {
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  text-align: center;
+  padding-bottom: 30px;
+  font-family: Montserrat;
+  font-size: 25px;
+  font-weight: lighter;
+  color: white;
+}
+
+#experience #experience_nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+}
+
+#experience #experience_nav ul li {
+  list-style-type: none;
+  padding-right: 15px;
+}
+
+#experience #experience_nav ul li a {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  text-decoration: none;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: lighter;
+  font-size: 14px;
+  text-transform: lowercase;
+}
+
+#experience #experience_nav ul li a:hover, #experience #experience_nav ul li a.active {
+  border-bottom: 1px solid white;
+}
+
+@media (max-width: 768px) {
+  #experience #experience_nav ul {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+#experience .tabs .tab {
+  margin-top: 50px;
+  display: none;
+}
+
+#experience .tabs .tab .work_experience_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 15px 0px;
+}
+
+#experience .tabs .tab .work_experience_item .thumb img {
+  width: 80px;
+  border-radius: 50%;
+}
+
+#experience .tabs .tab .work_experience_item .description {
+  color: white;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 0px 50px;
+}
+
+@media (max-width: 768px) {
+  #experience .tabs .tab .work_experience_item .description a {
+    letter-spacing: normal;
+  }
+}
+
+#experience .tabs .tab .work_experience_item .date {
+  color: white;
+  min-width: 250px;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  #experience .tabs .tab .work_experience_item .date {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  #experience .tabs .tab .work_experience_item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+#experience .tabs .tab.active {
+  display: block;
+}
+
+#education h2 {
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  text-align: center;
+  padding-bottom: 30px;
+  font-family: Montserrat;
+  font-size: 25px;
+  font-weight: lighter;
+}
+
+#education .education-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#education .education-items .education-item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 50px 30px 0px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#education .education-items .education-item img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+}
+
+#education .education-items .education-item .title {
+  margin-top: 30px;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+#education .education-items .education-item .description {
+  font-family: Montserrat;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  #education .education-items {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+#skills {
+  background-color: black;
+}
+
+#skills h2 {
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  text-align: center;
+  padding-bottom: 30px;
+  font-family: Montserrat;
+  font-size: 25px;
+  font-weight: lighter;
+  color: white;
+}
+
+#skills .skills-table {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0px 70px;
+}
+
+#skills .skills-table .skills-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#skills .skills-table .skills-item .label {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: white;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  #skills .skills-table .skills-item .label {
+    padding-bottom: 10px;
+  }
+}
+
+#skills .skills-table .skills-item .value {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+#skills .skills-table .skills-item .value .value-inner-display {
+  height: 30px;
+  background-color: white;
+}
+
+@media (max-width: 768px) {
+  #skills .skills-table .skills-item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+  }
+}
+
+#footer {
+  text-align: center;
+  padding: 70px 0px;
+}
+
+#footer a {
+  color: black;
+}
+/*# sourceMappingURL=styles.css.map */
